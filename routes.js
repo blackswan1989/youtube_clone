@@ -1,9 +1,11 @@
+//TODO router 주소들을 모두 이곳에 정의해두었다. 한 파일이 바뀌면 모두 적용되도록 할 수 있다.
+
 // Global
-const HOME = "/";
+const HOME = "/"; //영상 전달
 const JOIN = "/join";
 const LOGIN = "/login";
 const LOGOUT = "/logout";
-const SEARCH = "/search";
+const SEARCH = "/search"; //영상 검색
 
 // Users
 
@@ -32,7 +34,7 @@ const routes = {
   changePassword: CHANGE_PASSWORD,
   videos: VIDEOS,
   upload: UPLOAD,
-  videosDetail: VIDEO_DETAIL,
+  videoDetail: VIDEO_DETAIL,
   editVideo: EDIT_VIDEO,
   deleteVideo: DELETE_VIDEO,
 };
