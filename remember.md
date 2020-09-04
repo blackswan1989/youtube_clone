@@ -51,3 +51,15 @@ import bodyParser from "body-parser"
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
+
+# pug
+
+var express = require("express");
+var app = express()
+
+// app.set(name, value)
+app.set("title", "My site");
+app.get("title"); //"My Site"
+
+view engine 설정을 바꿀 예정.
+view engine 설정의 기본값은 undefined이다.

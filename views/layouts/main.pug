@@ -1,0 +1,16 @@
+//- 모든 HTML 페이지들의 토대가 되는 파일 
+//- main안에 모든 화면의 내용들을 채워넣기 위해 block설정 block이름을 content로 설정
+//- 기존 html방식은 모두 복붙해서 사용하고 하나가 바뀌면 모두 다시 복붙해야했지만 레이아웃을 사용하면 컨트롤이 간편해진다.
+//- pug안에 자바스크립트를 사용하고싶으면 #{}안에 작성하면 된다.
+
+doctype html
+html
+    head
+      link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU", crossorigin="anonymous")
+
+      title | #{siteName}
+    body
+      include ../partials/header
+      main
+        block content
+      include ../partials/footer
