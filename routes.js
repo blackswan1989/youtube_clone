@@ -10,8 +10,8 @@ const SEARCH = "/search"; //영상 검색
 // Users
 
 const USERS = "/users";
-const EDIT_PROFILE = "/edit-profile"; //users/editProfile
 const USER_DETAIL = "/:id"; //ex) /users/1
+const EDIT_PROFILE = "/edit-profile"; //users/editProfile
 const CHANGE_PASSWORD = "/change-password";
 
 // Videos
