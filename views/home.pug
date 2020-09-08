@@ -1,9 +1,15 @@
 extends layouts/main
 
 block content 
-  .videos
-    h1 Video
+    .videos
+        h1 Video 
+        each item in videos
+            h1= item.title
+            p= item.description 
   
+
+//- http://localhost:4000/
+
 //- pug는 템플릿언어로 express의 view engine이다.
 //- <p>태그를 p입력만으로 설정해줄수있다.
 //- extends layouts/main.pug는 main.pug를 전체 복사했고 덮어쓸수있다는 의미이다. 

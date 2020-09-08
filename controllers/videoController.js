@@ -1,4 +1,7 @@
-export const home = (req, res) => res.render("Home", { pageTitle: "Home" });
+import { videos } from "../db";
+export const home = (req, res) => {
+  res.render("home", { pageTitle: "Home", videos });
+};
 
 export const search = (req, res) => {
   //console.log(req.query.term); //example&something=lalalala&filter=price 이런 식으로 추가 입력해도 페이지 표시가 가능해진다(콘솔로도 확인 가능).
@@ -11,16 +14,16 @@ export const search = (req, res) => {
 };
 
 export const upload = (req, res) =>
-  res.render("Upload", { pageTitle: "Upload" });
+  res.render("upload", { pageTitle: "Upload" });
 
 export const videoDetail = (req, res) =>
-  res.render("Video Detail", { pageTitle: "Video Detail" });
+  res.render("videoDetail", { pageTitle: "Video Detail" });
 
 export const editVideo = (req, res) =>
-  res.render("Edit Video", { pageTitle: "Edit Video" });
+  res.render("editVideo", { pageTitle: "Edit Video" });
 
 export const deleteVideo = (req, res) =>
-  res.render("Delete Video", { pageTitle: "Delete Video" });
+  res.render("deleteVideo", { pageTitle: "Delete Video" });
 
 //각각의 controller들
 //search는 req,res를 함수의 인자로 입력받고 res.send("Search")로 리턴한다. 따라서 home과 search둘다 export해주어야 한다.
