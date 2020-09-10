@@ -7,8 +7,19 @@ header.header
       input(type="text", placeholder="Search by term...", name="term")
   .header__column
     ul
-      li
-        a(href=routes.join) Join
-      li
-        a(href=routes.login) LogIn
-        
+      if !user.isAuthenticated
+        li
+          a(href=routes.join) Join
+        li
+          a(href=routes.login) LogIn
+      else 
+        li
+          a(href=`/videos${routes.upload}`) Upload
+        li
+          a(href=routes.userDetail(user.id)) Profile
+        li
+          a(href=routes.logout) Log Out  
+
+
+//- isAuthenticated 사용자가 인증(로그인)되었음을 확인해주는 함수
+//- if !user.isAuthenticated = "user.isAuthenticated"이 true가 아니라면
