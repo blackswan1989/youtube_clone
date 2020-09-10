@@ -10,7 +10,7 @@ Cloning Youtube with VanillaJS and NodeJS
 
 9/8 : #2.19 ~ 2.22
 
-9/10 : #2.23 ~
+9/10 : #2.23 ~ 3.4
 
 ## Pages:
 

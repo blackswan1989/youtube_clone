@@ -63,3 +63,19 @@ app.get("title"); //"My Site"
 
 view engine 설정을 바꿀 예정.
 view engine 설정의 기본값은 undefined이다.
+
+# 3.0 mongodb (database)
+
+1. mongodb
+   설치방법 & 실행/종료 방법
+   https://zellwk.com/blog/install-mongodb/
+
+   vscode terminal : mongo 입력으로 실행중인것 확인 가능
+   vscode terminal : mongod 입력시 "port":27017 확인 가능
+
+2. mongoose
+   npn install mongoose
+
+3. dotenv
+   npm install dotenv
+   파일명 : .env (작성시 띄어쓰기 주의!)
