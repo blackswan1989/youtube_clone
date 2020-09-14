@@ -82,3 +82,11 @@ view engine 설정의 기본값은 undefined이다.
 3. dotenv
    npm install dotenv
    파일명 : .env (작성시 띄어쓰기 주의!)
+
+# multer (for video upload "URL") - middleware
+
+https://github.com/expressjs/multer/blob/master/doc/README-ko.md
+
+1. npm install multer
+2. 추가입력 upload.pug -> form -> enctype="multipart/form-data
+3. middleware.js -> Multer만들기
