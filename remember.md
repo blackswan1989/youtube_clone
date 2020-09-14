@@ -70,6 +70,9 @@ view engine 설정의 기본값은 undefined이다.
    설치방법 & 실행/종료 방법
    https://zellwk.com/blog/install-mongodb/
 
+   mongodb 실행필요 : brew services run mongodb-community
+   mongodb가 실행중인지 확인 : brew services list
+
    vscode terminal : mongo 입력으로 실행중인것 확인 가능
    vscode terminal : mongod 입력시 "port":27017 확인 가능
 

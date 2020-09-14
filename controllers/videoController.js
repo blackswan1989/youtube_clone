@@ -1,7 +1,17 @@
 import routes from "../routes";
+import Video from "../models/Video";
 
-export const home = (req, res) => {
-  res.render("home", { pageTitle: "Home", videos });
+export const home = async (req, res) => {
+  //async를 추가하면 javascript에게 function이 끝날때까지 기다려달라는 것과 같다. 즉 해당 과정이 끝나야 다음 실행이 이어진다.
+  //"Video.find({})"는 Database에 있는 모든 Video를 가지고 오게 한다.
+  //await는 async함수와 함께 사용해야만 한다.
+  //try와 catch는 error가 생기면 화면은 띄워주되 console.log로 넘겨준다.
+  try {
+    const videos = await Video.find({});
+  } catch (error) {
+    console.log(error);
+    res.render("home", { pageTitle: "Home", videos: [] });
+  }
 };
 
 export const search = (req, res) => {
