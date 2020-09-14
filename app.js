@@ -17,6 +17,7 @@ const app = express(); //app 상수
 //middlewares
 app.use(helmet());
 app.set("view engine", "pug");
+app.use("/uploads", express.static("uploads")); //static: 주어진 directory에서 file을 전달하는 새로운 middleware function
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

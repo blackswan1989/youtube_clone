@@ -90,3 +90,13 @@ https://github.com/expressjs/multer/blob/master/doc/README-ko.md
 1. npm install multer
 2. 추가입력 upload.pug -> form -> enctype="multipart/form-data
 3. middleware.js -> Multer만들기
+
+4. mongo 터미널 입력후(실행중일때) 업로드한 동영상 지우기
+   > use yourtube
+   > output: switched to db yourtube
+   > show collections
+   > output: videos
+   > db.videos.remove({})
+   > output: WriteResult({ "nRemoved" : 1 })
+   > exit
+   > output: bye
