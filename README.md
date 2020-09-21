@@ -14,6 +14,8 @@ Cloning Youtube with VanillaJS and NodeJS
 
 9/14 : #3.5 ~ 3.7
 
+9/21 : #3.8 ~
+
 ## Pages:
 
 - [ ] Home

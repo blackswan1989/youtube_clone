@@ -7,7 +7,8 @@ export const home = async (req, res) => {
   //await는 async함수와 함께 사용해야만 한다.
   //try와 catch는 error가 생기면 화면은 띄워주되 console.log로 넘겨준다.
   try {
-    const videos = await Video.find({});
+    const videos = await Video.find({}).sort({ _id: -1 });
+    //.sort는 정렬해주는 함수이다 -1을 부여한것은 위아래 순서를 바꾸겠다는 의미이다.
     res.render("home", { pageTitle: "Home", videos });
   } catch (error) {
     console.log(error);
@@ -21,7 +22,7 @@ export const search = (req, res) => {
   const {
     query: { term: searchingBy },
   } = req;
-  res.render("search", { pageTitle: "Search", searchingBy, videos });
+  res.render("search", { pageTitle: "Search", searchingBy });
 };
 
 export const getUpload = (req, res) =>
@@ -50,18 +51,47 @@ export const videoDetail = async (req, res) => {
   try {
     const video = await Video.findById(id);
     //console.log(video);
-    res.render("videoDetail", { pageTitle: "Video Detail", video });
+    res.render("videoDetail", { pageTitle: video.title, video });
   } catch (error) {
     //console.log(error);
     res.redirect(routes.home);
   }
 };
 
-export const editVideo = (req, res) =>
-  res.render("editVideo", { pageTitle: "Edit Video" });
+export const getEditVideo = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const video = await Video.findById(id);
+    res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });
+  } catch (error) {
+    res.redirect(routes.home);
+  }
+};
 
-export const deleteVideo = (req, res) =>
-  res.render("deleteVideo", { pageTitle: "Delete Video" });
+export const postEditVideo = async (req, res) => {
+  const {
+    params: { id },
+    body: { title, description },
+  } = req;
+  try {
+    await Video.findOneAndUpdate({ _id: id }, { title, description });
+    res.redirect(routes.videoDetail(id)); //edit후 다시 videoDetail페이지로 redirect시켜준다.
+  } catch (error) {
+    res.redirect(routers.home);
+  }
+};
+
+export const deleteVideo = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    await Video.findOneAndRemove({ _id: id });
+  } catch (error) {}
+  res.redirect(routes.home);
+};
 
 //각각의 controller들
 //search는 req,res를 함수의 인자로 입력받고 res.send("Search")로 리턴한다. 따라서 home과 search둘다 export해주어야 한다.

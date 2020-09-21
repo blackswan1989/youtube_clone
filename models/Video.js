@@ -7,9 +7,9 @@ const VideoSchema = new mongoose.Schema({
   },
   title: {
     type: String,
-    required: "Title is required",
+    required: "Tilte is required",
   },
-  decription: String,
+  description: String,
   views: {
     type: Number,
     default: 0,
