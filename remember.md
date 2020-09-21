@@ -102,3 +102,18 @@ https://github.com/expressjs/multer/blob/master/doc/README-ko.md
    > output: WriteResult({ "nRemoved" : 1 })
    > exit
    > output: bye
+
+# #3.11 Installing ESLint
+
+1.  npm install eslint -D
+2.  npm install prettier -D
+3.  npm install eslint-plugin-prettier -D
+4.  npm install eslint-config-prettier -D
+5.  npx eslint --init로 .eslintrc.js 생성
+6.  .eslintrc.js 설정해주기(OneNote참조)
+
+# #3.12 Searching Videos
+
+> https://regex101.com/
+
+> https://regex101.com/library
