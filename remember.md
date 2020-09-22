@@ -114,6 +114,43 @@ https://github.com/expressjs/multer/blob/master/doc/README-ko.md
 
 # #3.12 Searching Videos
 
-> https://regex101.com/
+1. https://regex101.com/
+2. https://regex101.com/library
+3. https://regexr.com/
 
-> https://regex101.com/library
+## #4.0 webpack
+
+1.https://webpack.js.org/
+
+- npm install webpack webpack-cli
+
+- webpack.config.js 파일 생성
+  (안의 내용은 server코드와는 연관시키지않고, client code 100% 여야 한다.)
+
+- package.json -> script를 "start"에서 "dev:server"로 수정.
+
+- "dev:assets": "WEBPACK_ENV=development webpack -w" 추가
+  (dev:assets는 webpack.config.js파일을 찾아 실행된다.)
+
+- "build:assets": "WEBPACK_ENV=production webpack"추가시켜준다.
+  ("build:assets"은 내 코드를 server에 올려준다.)
+
+- npm start로 시작하는 것이 아닌 각각 다른 콘솔에서
+  npm run dev:server 그리고 npm run dev:assets로 실행시켜준다.\*\*\*
+
+- npm install extract-text-webpack-plugin@next (@next를 붙이면 최신베타버전 설치가능)
+  (https://github.com/webpack-contrib/extract-text-webpack-plugin)
+
+- css-loader에러 발생시 : npm install css-loader postcss-loader sass-loader
+
+-2.Autoprefixer (https://github.com/postcss/autoprefixer)
+
+- webpack의 postcss-loader를 위함.
+- npm install autoprefixer (설치 후 webpack.confing.js에 코드 작성)
+- https://webpack.js.org/loaders/postcss-loader/#autoprefixer 참조하여 설치
+- #4.2 extract-text-webpack-plugin 에러시 설치 방법
+  - npm install sass-loader@7.1
+  - npm install css-loader@1.0.1
+  - npm install webpack@4.36
+  - 위 사이트 참조하여 `options > postcssOptions > plugins 순서로 코드 수정
+  - npm run dev:assets로 실행 \* (정상적으로 구동되면 static파일이 생성 될 것이다.)
