@@ -1,0 +1,35 @@
+// .videos {
+//    .videoBlock
+//       a
+//       videoBlock__thumbnail
+//       videoBlock__title,
+//       videoBlock__views
+// }
+.videos {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  .videoBlock {
+    margin: 20px 20px;
+    width: 30%;
+    margin-bottom: 50px;
+    .videoBlock__thumbnail {
+      width: 100%;
+    }
+    .videoBlock__title,
+    .videoBlock__views {
+      font-size: 15px;
+      color: $font;
+      text-decoration: none;
+    }
+  }
+  .videoBlock:first-child {
+    width: 68%;
+    .videoBlock__title,
+    .videoBlock__views {
+      font-size: 20px;
+    }
+  }
+}

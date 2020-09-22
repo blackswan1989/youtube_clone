@@ -1,15 +1,20 @@
 extends layouts/main
 
 block content 
-    p Upload 
     .form-container
-        form(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
-            div.fileUpload
-                label(for="file") Video File
-                input(type="file", id="file", name="videoFile", required=true, accept="video/*")
-            input(type="text", placeholder="Title", name="title", required=true)
-            textarea(name="description", placeholder="Description", required=true)
-            input(type="submit", value="Upload Video")
+        h1 <i class="fas fa-upload"></i> Video Upload
+        h5 YourTube에 동영상을 제출하면 YourTube 서비스 약관 및 커뮤니티 가이드에 동의하게 됩니다.
+        h5 타인의 저작권 또는 개인정보 보호 권한을 침해해서는 안 됩니다.
+        form.upload(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
+            input.title(type="text", placeholder="Title", name="title", required=true)
+            textarea.description(name="description", placeholder="Description", required=true)
+            div.upload__column
+                div.fileUpload
+                    label(for="file",) Open File
+                    input.upload__input(type="file", id="file", name="videoFile", required=true, accept="video/*")
+                input.input__text(type=text, name="text")
+                input.uploadVideo(type="submit", value="Upload Video")
+
 
 
 //- http://localhost:4000/videos/upload

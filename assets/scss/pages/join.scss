@@ -1,0 +1,96 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 90vh;
+  .join__title {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    input {
+      width: 300px;
+      height: 40px;
+      margin: 5px 0px;
+      border-radius: 5px;
+      text-align: center;
+      background-color: $dark-grey;
+      border: 1px solid $black;
+      color: $black;
+      font-weight: 600;
+      transition-duration: 0.5s;
+      font-size: 12px;
+      &:last-child {
+        width: 308px;
+        height: 42px;
+        background-color: $grey;
+        color: $black;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      &:last-child:hover {
+        background-color: $youtube-red;
+        color: $font;
+        transition: 0.2s ease-in-out;
+      }
+      &:last-child:active {
+        transform: scale(0.9);
+      }
+      &:focus {
+        background-color: $grey;
+      }
+      &:hover {
+        background-color: $youtube-red;
+        color: $font;
+        transition: 0.2s ease-in-out;
+      }
+      &::placeholder {
+        color: $dark-black;
+      }
+      &::placeholder {
+        color: $font;
+      }
+    }
+  }
+}
+
+.social-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 40px;
+    margin: 5px 0px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: $grey;
+    color: $black;
+    outline: none;
+    border: 1px solid $black;
+    transition-duration: 0.5s;
+    &:hover {
+      background-color: $youtube-red;
+      color: $font;
+      transition: 0.2s ease-in-out;
+    }
+    &:active {
+      transform: scale(0.9);
+    }
+    span > i {
+      margin-right: 5px;
+      font-size: 1rem;
+    }
+  }
+}

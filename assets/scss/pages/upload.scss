@@ -1,0 +1,92 @@
+.form-container {
+  h1 {
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: $font;
+    i {
+      margin-right: 5px;
+    }
+  }
+  h5 {
+    margin: 3px 0px;
+  }
+  .upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    .title {
+      width: 500px;
+      height: 30px;
+      border: 1px solid $grey;
+      &::placeholder {
+        opacity: 0.7;
+      }
+    }
+    .description {
+      width: 500px;
+      height: 100px;
+      margin-top: 20px;
+      border: 1px solid $grey;
+      outline: none;
+      resize: none;
+      &::placeholder {
+        opacity: 0.7;
+      }
+    }
+    .upload__column {
+      width: 100%;
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .fileUpload {
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        vertical-align: middle;
+        overflow: hidden;
+        width: 100px;
+        height: 30px;
+        background-color: $youtube-blue;
+        color: $font;
+        text-align: center;
+        line-height: 30px;
+        label {
+          // padding: 0.75em 1em;
+          // font-size: 0.5rem;
+          // line-height: normal;
+          // vertical-align: middle;
+          // background-color: $youtube-blue;
+          // color: $font;
+          // cursor: pointer;
+          width: 0;
+          height: 0;
+          overflow: hidden;
+        }
+      }
+      .input__text {
+        vertical-align: middle;
+        display: inline-block;
+        width: 250px;
+        height: 28px;
+        line-height: 28px;
+        font-size: 11px;
+        padding: 0;
+        margin: 0;
+        border: 1px solid $grey;
+      }
+      .uploadVideo {
+        background-color: $youtube-blue;
+        color: $font;
+        cursor: pointer;
+        padding: 8px 15px;
+        font-size: 0.5rem;
+        border: none;
+        margin-left: 50px;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

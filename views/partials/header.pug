@@ -1,24 +1,28 @@
 header.header
   .header__column
+    <i class="fas fa-bars"></i>
     a(href=routes.home)
-      <i class="fab fa-youtube"></i>
+      <i class="fab fa-youtube"></i>YOURTUBE
   .header__column
     form(action=routes.search, method="get")
-      input(type="text", placeholder="Search by term...", name="term")
+      input(type="text", placeholder="Search ", name="term")
+      <i class="fas fa-search"></i>
   .header__column
     ul
       if !user.isAuthenticated
         li
-          a(href=routes.join) Join
+          a(href=routes.join) <i class="fas fa-user-plus"></i> Join
         li
-          a(href=routes.login) LogIn
+          a(href=routes.login) <i class="fas fa-sign-in-alt"></i> LogIn
       else 
         li
-          a(href=`/videos${routes.upload}`) Upload
+          a(href=`/videos${routes.upload}`) <i class="fas fa-video"></i> Upload 
         li
-          a(href=routes.userDetail(user.id)) Profile
+          a(href=routes.userDetail(user.id)) <i class="fas fa-user-circle"></i> Profile
         li
-          a(href=routes.logout) Log Out  
+          a(href=routes.logout) <i class="fas fa-sign-out-alt"></i> Log Out  
+        li
+          <i class="fas fa-th"></i>
 
 
 //- isAuthenticated 사용자가 인증(로그인)되었음을 확인해주는 함수
