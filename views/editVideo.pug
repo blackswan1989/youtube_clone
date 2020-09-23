@@ -2,10 +2,16 @@ extends layouts/main
 
 block content 
     .form-container
-        form(action=routes.editVideo(video.id), method="post")
-            input(type="text", placeholder="Title", name="title", value=video.title)
-            textarea(name="description", placeholder="Description")=video.description
-            input(type="submit", value="Update Video")
-        a.form-container__link.form-container__link--delete(href=routes.deleteVideo(video.id)) Delete Video 
+        h1 <i class="fas fa-edit"></i> Edit Video
+        h5 동영상을 제출하면 YourTube 서비스 약관 및 커뮤니티 가이드에 동의하게 됩니다. 
+        h5 타인의 저작권 또는 개인정보 보호 권한을 침해해서는 안 됩니다.
+        form.upload(action=routes.editVideo(video.id), method="post")
+            p Title
+            input.title(type="text", placeholder="Title", name="title", value=video.title)
+            p Description
+            textarea.description(name="description", placeholder="Description")=video.description
+            div.upload__column
+                a.form-container__link.form-container__link--delete(href=routes.deleteVideo(video.id)) Delete Video <i class="fas fa-trash-alt"></i>
+                input.updateVideo(type="submit", value="Update Video")
 
 //- http://localhost:4000/videos/1/edit

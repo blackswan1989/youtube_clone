@@ -20,6 +20,7 @@
       width: 500px;
       height: 30px;
       border: 1px solid $grey;
+
       &::placeholder {
         opacity: 0.7;
       }
@@ -27,10 +28,10 @@
     .description {
       width: 500px;
       height: 100px;
-      margin-top: 20px;
       border: 1px solid $grey;
       outline: none;
       resize: none;
+      margin-top: 20px;
       &::placeholder {
         opacity: 0.7;
       }
@@ -53,20 +54,14 @@
         color: $font;
         text-align: center;
         line-height: 30px;
-        label {
-          // padding: 0.75em 1em;
-          // font-size: 0.5rem;
-          // line-height: normal;
-          // vertical-align: middle;
-          // background-color: $youtube-blue;
-          // color: $font;
-          // cursor: pointer;
+        cursor: pointer;
+        input {
           width: 0;
           height: 0;
           overflow: hidden;
         }
       }
-      .input__text {
+      #file_route {
         vertical-align: middle;
         display: inline-block;
         width: 250px;

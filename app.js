@@ -16,7 +16,7 @@ const app = express(); //app 상수
 
 //middlewares
 app.use(helmet());
-app.set("view engine", "pug");
+app.set("view engine", "pug"); //express view engine으로 pug사용 (express는 views폴더를 기본 디렉토리로 찾는다.)
 app.use("/uploads", express.static("uploads")); //static: 주어진 directory에서 file을 전달하는 새로운 middleware function
 app.use("/static", express.static("static"));
 app.use(cookieParser());

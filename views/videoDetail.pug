@@ -1,10 +1,16 @@
 extends layouts/main
 
 block content 
-  .video__player
-        video(src=`/${video.fileUrl}`)
-  .video__info
-        a(href=routes.editVideo(video.id)) Edit Video
+  .videoDetail
+    .video__player
+      video(src=`/${video.fileUrl}`)
+    .video__info
+      .info__column
         h5.video__title=video.title
-        span.video__views=video.views
-        p.video__description=video.description 
+        p.video__description=video.description
+        div.like__column
+          span Views <i class="far fa-eye"></i>
+          span.video__views=video.views  
+      .info__column
+        div
+          a(href=routes.editVideo(video.id)) Edit Video
