@@ -6,13 +6,20 @@ import morgan from "morgan";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
+import passport from "passport"; // passport middleware
+import mongoose from "mongoose";
+import session from "express-session";
+import MongoStore from "connect-mongo";
 import { localsMiddleware } from "./middleware";
 import routes from "./routes";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
+import "./passport";
 
 const app = express(); //app 상수
+
+const CookieStore = MongoStore(session);
 
 //middlewares
 app.use(helmet());
@@ -23,6 +30,24 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
+app.use(
+  session({
+    secret: process.env.COOKIE_SECRET,
+    //https://randomkeygen.com/ 사이트에서 랜덤텍스트 가져옴.
+    //console.log(process.env.COOKIE_SECRET);로 확인해보기.
+    //COOKIE_SECRET는 .env에 넣어 보안을 위해 숨김.
+    //session은 이를 해독하고 passort로 넘어간다.
+    resave: true,
+    saveUninitialized: false,
+    store: new CookieStore({ mongooseConnection: mongoose.connection }),
+    //CookieStore와 mongo를 연결시켜주어야한다.
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+//passport를 통해 session이 가진 쿠키를 이용한다.
+//그리고 그 passport로 passport.js의 deserialize를 진행한다.
+
 app.use(localsMiddleware); //local변수를 global변수로 사용하도록 만들어주는 middleware.
 
 //router를 3개 사용.

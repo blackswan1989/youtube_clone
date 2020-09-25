@@ -8,17 +8,29 @@ Cloning Youtube with VanillaJS and NodeJS
 
 9/5 : #2.15 ~ 2.18
 
+9/6 ~ 9/7 : CSS Layout challenge
+
 9/8 : #2.19 ~ 2.22
+
+9/9 : CSS Layout challenge
 
 9/10 : #2.23 ~ 3.4
 
+9/11 ~ 9/12 : CSS Layout challenge
+
 9/14 : #3.5 ~ 3.7
+
+9/15 ~ 9/19 : challenge & review #0.0 ~ 2.17
 
 9/21 : #3.8 ~ #3.12
 
 9/22 : #4.0 ~ #5.0
 
 9/23 : #5.0 ~ #5.2
+
+9/24 : review #2.18 ~ 2.25
+
+9/25 : challenge & #6.0 ~ 6.5
 
 ## Pages:
 

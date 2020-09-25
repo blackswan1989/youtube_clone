@@ -24,3 +24,10 @@ main {
 video {
   outline: none;
 }
+
+input[type="submit"],
+input[type="file"],
+button,
+label {
+  cursor: pointer;
+}

@@ -73,9 +73,16 @@
 }
 
 .header__column:nth-child(3) {
-  min-width: 300px;
   &.header__column > ul {
     display: flex;
+  }
+  ul {
+    li {
+      min-width: 90px;
+      &:last-child {
+        min-width: 0px;
+      }
+    }
   }
 }
 

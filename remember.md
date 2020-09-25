@@ -154,3 +154,14 @@ https://github.com/expressjs/multer/blob/master/doc/README-ko.md
   - npm install webpack@4.36
   - 위 사이트 참조하여 `options > postcssOptions > plugins 순서로 코드 수정
   - npm run dev:assets로 실행 \* (정상적으로 구동되면 static파일이 생성 될 것이다.)
+
+## PASSPORT
+
+- npm install passport-local-mongoose 설치
+  (패스워드 설정, 확인 등 자동으로 해준다.)
+- npm i passport passport-local 설치
+- npm install express-session 설치
+
+## connect-mongo
+
+- npm i connect-mongo

@@ -9,7 +9,7 @@ header.header
       button <i class="fas fa-search"></i>
   .header__column
     ul
-      if !user.isAuthenticated
+      if !user
         li
           a(href=routes.join) <i class="fas fa-user-plus"></i> Join
         li
