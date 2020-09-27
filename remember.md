@@ -149,19 +149,27 @@ https://github.com/expressjs/multer/blob/master/doc/README-ko.md
 - npm install autoprefixer (설치 후 webpack.confing.js에 코드 작성)
 - https://webpack.js.org/loaders/postcss-loader/#autoprefixer 참조하여 설치
 - #4.2 extract-text-webpack-plugin 에러시 설치 방법
-  - npm install sass-loader@7.1
-  - npm install css-loader@1.0.1
-  - npm install webpack@4.36
-  - 위 사이트 참조하여 `options > postcssOptions > plugins 순서로 코드 수정
-  - npm run dev:assets로 실행 \* (정상적으로 구동되면 static파일이 생성 될 것이다.)
+  > npm install sass-loader@7.1
+  > npm install css-loader@1.0.1
+  > npm install webpack@4.36
+  > 위 사이트 참조하여 `options > postcssOptions > plugins 순서로 코드 수정
+  > npm run dev:assets로 실행 \* (정상적으로 구동되면 static파일이 생성 될 것이다.)
 
 ## PASSPORT
 
-- npm install passport-local-mongoose 설치
-  (패스워드 설정, 확인 등 자동으로 해준다.)
-- npm i passport passport-local 설치
-- npm install express-session 설치
+공식사이트 참조 http://www.passportjs.org/docs/downloads/html/
+npm install passport-local-mongoose 설치 (패스워드 설정, 확인 등 자동으로 해준다.)
+npm i passport passport-local 설치
+npm install express-session 설치
 
 ## connect-mongo
 
-- npm i connect-mongo
+npm i connect-mongo
+
+## #6.6 github login
+
+공식사이트 http://www.passportjs.org/packages/passport-github/
+npm install passport-github
+깃헙에서 application 추가 필요
+https://github.com/settings/applications/1383396
+.env에서 GH_ID, GH_SECRET 각각 입력해주기 (위 사이트에서 정보 확인 가능)

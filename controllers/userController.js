@@ -43,9 +43,42 @@ export const postLogin = passport.authenticate("local", {
   successRedirect: routes.home,
 });
 
+// Github Login
+export const githubLogin = passport.authenticate("github");
+
+export const githubLoginCallback = async (_, __, profile, cb) => {
+  //console.log(accessToken, refreshToken, profile, cb);
+  const {
+    _json: { id, avatar_url, name }, //*  email 삭제
+  } = profile;
+  const { value: email } = profile.emails.filter((item) => item.primary)[0]; //* github email이 private 설정되어있어도 가입되도록 코드추가
+  try {
+    const user = await User.findOne({ email });
+    //console.log(user);
+    if (user) {
+      user.githubId = id;
+      user.save();
+      return cb(null, user);
+    }
+    const newUser = await User.create({
+      email,
+      name,
+      githubId: id,
+      avatarUrl: avatar_url,
+    });
+    return cb(null, newUser);
+  } catch (error) {
+    return cb(error);
+  }
+};
+
+export const postGithubLogin = (req, res) => {
+  res.redirect(routes.home);
+};
+
 // Log out Part
 export const logout = (req, res) => {
-  // To Do: Process Log Out
+  req.logout(); //Process Log Out
   res.redirect(routes.home);
 };
 
