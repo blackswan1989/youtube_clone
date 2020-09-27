@@ -173,3 +173,5 @@ npm install passport-github
 깃헙에서 application 추가 필요
 https://github.com/settings/applications/1383396
 .env에서 GH_ID, GH_SECRET 각각 입력해주기 (위 사이트에서 정보 확인 가능)
+
+## 6.10 2:28 ~ #6.12 FACEBOOK 인증 기능 PASS

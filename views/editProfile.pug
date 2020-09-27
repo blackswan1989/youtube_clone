@@ -2,13 +2,23 @@ extends layouts/main
 
 block content 
   .form-container
-    form(action=routes.editProfile, method="post")
-      label(for="avatar") Avatar
-      input(type="file", id="avatar", name="avatar")
-      input(type="text", placeholder="name", name="name")
-      input(type="email", placeholder="Email" name="email")      
-      input(type="submit", value="Update Profile")
-    a.form-container__link(href=`/users${routes.changePassword}`) Change Password
+    //- .profile__column--box
+    //-     <i class="far fa-user-circle"></i>
+    //-     h2.profile__name=user.name
+    //- .profile__column--box
+    //-     <i class="far fa-envelope"></i>
+    //-     h2.profile__email=user.email
+    form.upload(action=routes.editProfile, method="post")
+      input.title(type="text", placeholder="name", name="name")
+      input.title(type="email", placeholder="Email" name="email")      
+      div.upload__column
+        .avatarUpload
+          label(for="avatar") <i class="fas fa-folder-open"></i> Open File
+          input.upload__input(type="file", id="avatar", name="avatar", onchange="document.getElementById('file_route').value=this.value", required=true, accept="img")
+        input#file_route(type="text", title="File Route", readonly="readonly")
+        input(type="submit", value="Update Profile")
+      a.form-container__link(href=`/users${routes.changePassword}`)
+        button Change Password
 
 
     //- http://localhost:4000/users/edit-profile

@@ -4,8 +4,18 @@ block content
   .user-profile
     .user-profile__header
       img.avatar(src=user.avatarUrl) 
-      h2.profile__name=user.name
-      h4.profile__email=user.email
+      .header__column
+        .profile__column
+          .profile__column--box
+            <i class="far fa-user-circle"></i>
+            h2.profile__name=user.name
+          .profile__column--box
+            <i class="far fa-envelope"></i>
+            h2.profile__email=user.email
+        if user.id === loggedUser.id
+          .user-profile__btns
+            a(href=`/users${routes.editProfile}`)
+              button <i class="fas fa-user-edit"></i> Edit Profile
 
     
     

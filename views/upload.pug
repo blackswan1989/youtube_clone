@@ -10,7 +10,7 @@ block content
             textarea.description(name="description", placeholder="Description", required=true)
             div.upload__column
                 div.fileUpload
-                    label(for="file",) <i class="fas  fa-folder-open"></i> Open File
+                    label(for="file",) <i class="fas fa-folder-open"></i> Open File
                     input.upload__input(type="file", id="file", name="videoFile", onchange="document.getElementById('file_route').value=this.value", required=true, accept="video/*")
                 input#file_route(type="text", title="File Route", readonly="readonly")
                 input.uploadVideo(type="submit", value="Upload Video")
