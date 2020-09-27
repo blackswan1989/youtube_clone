@@ -49,7 +49,7 @@ export const githubLogin = passport.authenticate("github");
 export const githubLoginCallback = async (_, __, profile, cb) => {
   //console.log(accessToken, refreshToken, profile, cb);
   const {
-    _json: { id, avatar_url, name }, //*  email 삭제
+    _json: { id, avatar_url, name }, //* email 삭제
   } = profile;
   const { value: email } = profile.emails.filter((item) => item.primary)[0]; //* github email이 private 설정되어있어도 가입되도록 코드추가
   try {
@@ -57,6 +57,8 @@ export const githubLoginCallback = async (_, __, profile, cb) => {
     //console.log(user);
     if (user) {
       user.githubId = id;
+      // user.avatarUrl = avatar_url;
+      // user.name = name;
       user.save();
       return cb(null, user);
     }
@@ -82,6 +84,11 @@ export const logout = (req, res) => {
   res.redirect(routes.home);
 };
 
+export const getMe = (req, res) => {
+  res.render("userDetail", { pageTitle: "User Detail", user: req.user });
+  //req.user는 현재 로그인 된 사용자이다.
+};
+
 export const userDetail = (req, res) =>
   res.render("userDetail", { pageTitle: "User Detail" });
 
@@ -91,12 +98,21 @@ export const editProfile = (req, res) =>
 export const changePassword = (req, res) =>
   res.render("changePassword", { pageTitle: "Change Password" });
 
-/*
+/* NOTE github website(auth)
+github website(auth) -> /auth/github/callback
+githubLoginCallback(profile) => cb(error, user)
+  error -> user is not exist -> The end
+  user exist  -> cookie = makeCookie(user) 
+              -> savedCooke = saveCookie(cookie) 
+              -> sendCookie(savedCookie)
+*/
+
+/* NOTE get & post method
 get은 서버 등의 resource에서 데이터를 가져오는 메소드이고,
 post는 생성/업로드한 리소스를 서버로 보내는 메소드. 
 */
 
-/* arrow founction
+/* NOTE arrow founction
 function join() {
   return true;
 }

@@ -9,7 +9,7 @@ header.header
       button <i class="fas fa-search"></i>
   .header__column
     ul
-      if !user
+      if !loggedUser
         li
           a(href=routes.join) <i class="fas fa-user-plus"></i> Join
         li
@@ -18,7 +18,7 @@ header.header
         li
           a(href=`/videos${routes.upload}`) <i class="fas fa-video"></i> Upload 
         li
-          a(href=routes.userDetail(user.id)) <i class="fas fa-user-circle"></i> Profile
+          a(href=routes.me) <i class="fas fa-user-circle"></i> Profile
         li
           a(href=routes.logout) <i class="fas fa-sign-out-alt"></i> Log Out  
         li

@@ -9,7 +9,7 @@ const multerVideo = multer({ dest: "uploads/videos/" });
 export const localsMiddleware = (req, res, next) => {
   res.locals.siteName = "YourTube";
   res.locals.routes = routes;
-  res.locals.user = req.user || null;
+  res.locals.loggedUser = req.user || null; //loggedUser -> header.pug
   //req.user를 사용하는 이유는 passport가 로그인 시킬때 쿠키나 serialize, deserialize등의 기능을 모두 지원해주고, user가 담긴 object를 요청(request)에도 올려주기 때문이다.
   //console.log(req.user); id등 정상출력 확인
   next();

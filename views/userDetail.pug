@@ -1,5 +1,13 @@
 extends layouts/main
 
 block content 
-  p User Detail Page
+  .user-profile
+    .user-profile__header
+      img.avatar(src=user.avatarUrl) 
+      h2.profile__name=user.name
+      h4.profile__email=user.email
+
+    
+    
+    //- models -> User -> "avatartUrl"을 의미
   
