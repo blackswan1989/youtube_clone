@@ -5,6 +5,7 @@ import multer from "multer";
 import routes from "./routes";
 
 const multerVideo = multer({ dest: "uploads/videos/" });
+const multerAvatar = multer({ dest: "uploads/avatars/" });
 
 export const localsMiddleware = (req, res, next) => {
   res.locals.siteName = "YourTube";
@@ -31,6 +32,8 @@ export const onlyPrivate = (req, res, next) => {
   }
 };
 
+//업로드 연결
 export const uploadVideo = multerVideo.single("videoFile");
+export const uploadAvatar = multerAvatar.single("avatar");
 
 //"uploadVideo.single("");"에서 single은 오직 하나의 파일만 upload할 수 있다는 것을 의미한다. ("")는 이곳에 들어올 파일의 Name이다. (upload.pug의 input->file의 name설정)
