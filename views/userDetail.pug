@@ -3,7 +3,7 @@ extends layouts/main
 block content 
   .user-profile
     .user-profile__header
-      img.avatar(src=user.avatarUrl) 
+      img.avatar(src=`/${user.avatarUrl}`) 
       .header__column
         .profile__column
           .profile__column--box
@@ -19,5 +19,10 @@ block content
 
     
     
-    //- models -> User -> "avatartUrl"을 의미
-  
+//- models -> User -> "avatartUrl"을 의미
+
+//- express.use는 미들웨어인데
+//- 첫번째 인자로 경로 , 두번 째로 함수 가 들어갑니다
+//- 경로를 생략하면 모든 경로에서 실행이 되고
+//- 경로를 추가하면 i.e. /test 인 경우
+//- /test/styles.css 정적 파일에 접근이 가능해요
