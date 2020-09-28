@@ -9,16 +9,19 @@
       width: 500px;
       height: 30px;
       border: 1px solid $grey;
+      &:first-child {
+        margin-bottom: 20px;
+      }
       &::placeholder {
         opacity: 0.7;
       }
     }
     .upload__column {
       width: 100%;
-      margin-top: 20px;
       display: flex;
       justify-content: flex-start;
       align-items: center;
+      margin-bottom: 30px;
       .avatarUpload {
         position: relative;
         border-radius: 2px;
@@ -32,6 +35,9 @@
         text-align: center;
         line-height: 30px;
         cursor: pointer;
+        i {
+          z-index: -99;
+        }
         input {
           width: 0;
           height: 0;
@@ -49,16 +55,47 @@
         margin: 0;
         border: 1px solid $grey;
       }
-      .uploadVideo {
+      .upload__profile {
         background-color: $youtube-blue;
         color: $font;
         cursor: pointer;
         padding: 8px 15px;
         font-size: 0.5rem;
         border: none;
-        margin-left: 50px;
+        margin-left: 43px;
         font-size: 0.8rem;
       }
     }
+  }
+}
+
+.form-container__link-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  background-color: $youtube-red;
+  margin-top: 50px;
+  border-radius: 2px;
+  i {
+    color: $font;
+    &:first-child {
+      margin-right: 20px;
+    }
+    &:last-child {
+      margin-left: 20px;
+    }
+  }
+  .link__changePassword {
+    background-color: $youtube-red;
+    color: $font;
+    cursor: pointer;
+    padding: 8px 15px;
+    font-size: 0.5rem;
+    border: none;
+    font-size: 0.8rem;
+  }
+  &:active {
+    transform: scale(0.95);
   }
 }

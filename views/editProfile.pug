@@ -14,11 +14,15 @@ block content
       div.upload__column
         .avatarUpload
           label(for="avatar") <i class="fas fa-folder-open"></i> Open File
-          input.upload__input(type="file", id="avatar", name="avatar", onchange="document.getElementById('file_route').value=this.value", required=true, accept="img")
+          input.upload__profile(type="file", id="avatar", name="avatar", onchange="document.getElementById('file_route').value=this.value", required=true)
         input#file_route(type="text", title="File Route", readonly="readonly")
-        input(type="submit", value="Update Profile")
+        input.upload__profile(type="submit", value="Update Profile")
       a.form-container__link(href=`/users${routes.changePassword}`)
-        button Change Password
+        .form-container__link-column
+          <i class="fas fa-user-lock"></i>
+          div.link__changePassword Change Password
+          <i class="fas fa-key"></i>
+          
 
 
     //- http://localhost:4000/users/edit-profile
