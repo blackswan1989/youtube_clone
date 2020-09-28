@@ -9,8 +9,19 @@ block content
         h5.video__title=video.title
         p.video__description=video.description
         div.like__column
-          span Views <i class="far fa-eye"></i>
-          span.video__views=video.views  
+          if video.views === 1
+            span.video__views views <i class="far fa-eye"></i> 1
+          else
+            span.video__views views <i class="far fa-eye"></i> #{video.views} 
       .info__column
         div
-          a(href=routes.editVideo(video.id)) Edit Video
+          if video.creator.id === loggedUser.id
+            a(href=routes.editVideo(video.id)) Edit Video
+    .video__author
+      |Uploaded by 
+      a(href=routes.userDetail(video.creator.id))=video.creator.name
+    .video__comments
+      if video.comments.legth === 1
+        span.video__comment-number comment 1
+      else
+        span.video__comment-number comments #{video.comments.length}

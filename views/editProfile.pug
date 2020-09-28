@@ -2,13 +2,13 @@ extends layouts/main
 
 block content 
   .form-container
-    form.upload(action=`/users${routes.editProfile}`, method="post")
+    form.upload(action=`/users${routes.editProfile}`, method="post", enctype="multipart/form-data")
       input.title(type="text", placeholder="name", name="name", value=loggedUser.name)
       input.title(type="email", placehol5der="Email" name="email", value=loggedUser.email)      
       div.upload__column
         .avatarUpload
           label(for="avatar") <i class="fas fa-folder-open"></i> Open File
-          input.upload__profile(type="file", id="avatar", name="avatar", onchange="document.getElementById('file_route').value=this.value")
+          input.upload__profile(type="file", id="avatar", name="avatar", onchange="document.getElementById('file_route').value=this.value", accept="image/*")
         input#file_route(type="text", title="File Route", readonly="readonly")
         input.upload__profile(type="submit", value="Update Profile")
       a.form-container__link(href=`/users${routes.changePassword}`)

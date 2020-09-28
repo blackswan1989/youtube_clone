@@ -32,17 +32,15 @@
       }
       p {
         margin-top: 15px;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
       }
       .like__column {
         display: flex;
-        span {
-          color: $youtube-font;
-          margin-top: 15px;
-          font-size: 1rem;
-          i {
-            margin-right: 5px;
-          }
+        color: $youtube-font;
+        margin-top: 15px;
+        font-size: 1rem;
+        i {
+          margin-right: 2px;
         }
       }
       a {
@@ -61,5 +59,9 @@
         margin-top: 11px;
       }
     }
+  }
+
+  .video__comments {
+    margin-top: 40px;
   }
 }

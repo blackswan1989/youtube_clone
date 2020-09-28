@@ -1,10 +1,15 @@
 .user-profile {
-  margin-top: 50px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .user-profile__header {
-    width: 100%;
     display: flex;
     flex-direction: column;
+    width: 100%;
     img {
+      max-width: 405px;
+      max-height: 50%;
       border-radius: 4px;
     }
     .header__column {
@@ -42,7 +47,7 @@
         background-color: $youtube-red;
         color: $font;
         cursor: pointer;
-        padding: 8px 15px;
+        padding: 6.5px 15px;
         font-size: 0.5rem;
         border: none;
         margin-left: 50px;
