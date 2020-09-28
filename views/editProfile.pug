@@ -2,9 +2,9 @@ extends layouts/main
 
 block content 
   .form-container
-    form.upload(action=routes.editProfile, method="post")
+    form.upload(action=`/users${routes.editProfile}`, method="post")
       input.title(type="text", placeholder="name", name="name", value=loggedUser.name)
-      input.title(type="email", placeholder="Email" name="email", value=loggedUser.email)      
+      input.title(type="email", placehol5der="Email" name="email", value=loggedUser.email)      
       div.upload__column
         .avatarUpload
           label(for="avatar") <i class="fas fa-folder-open"></i> Open File
