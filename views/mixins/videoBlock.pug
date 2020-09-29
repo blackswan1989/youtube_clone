@@ -1,8 +1,13 @@
 mixin videoBlock(video = {})
   .videoBlock
     a(href=routes.videoDetail(video.id))
-      video.videoBlock__thumbnail(src=video.videoFile, controls=true)
+      video.videoBlock__thumbnail(src=`/${video.videoFile}`, controls=true)
       h4.videoBlock__title=video.title
       div.like__column
         span Views <i class="far fa-eye"></i>
         span.video__views=video.views  
+
+
+//- video.videoBlock__thumbnail(src=video.videoFile, controls=true) 
+//- `/${video.videoFile}`, 
+//- a(href=`/${routes.videoDetail(video.id)}`)

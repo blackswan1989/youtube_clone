@@ -22,9 +22,11 @@
     width: 64.8%;
     min-width: 300px;
     margin-top: 10px;
+    position: relative;
     .info__column {
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;
       h5 {
         font-size: 2rem;
         color: $font;
@@ -43,25 +45,59 @@
           margin-right: 2px;
         }
       }
-      a {
-        background-color: $youtube-font;
-        color: $font;
-        cursor: pointer;
-        padding: 6px 12px;
-        font-size: 0.5rem;
-        border: none;
-        font-size: 0.8rem;
-        &:active {
-          transform: scale(0.9);
+      .editVideo {
+        margin-top: 10px;
+        a {
+          background-color: $youtube-font;
+          color: $font;
+          cursor: pointer;
+          padding: 5px 22px;
+          border: none;
+          font-size: 0.85rem;
+          &:active {
+            transform: scale(0.9);
+          }
         }
       }
-      div {
-        margin-top: 11px;
+      .video__author {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        font-size: 0.8rem;
+        margin-top: 5px;
+        .video__author__column {
+          margin: 0;
+          transition-duration: 0.5s;
+          .video__author__creator {
+            color: $font;
+            &:hover {
+              color: $youtube-font;
+              transition: 0.2s ease-in-out;
+            }
+          }
+          .like-button {
+            color: $font;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            i {
+              font-size: 1.1rem;
+              cursor: pointer;
+              &:active {
+                transform: scale(0.9);
+              }
+              &:hover {
+                color: $youtube-font;
+                transition: 0.2s ease-in-out;
+              }
+            }
+          }
+        }
       }
     }
   }
 
   .video__comments {
-    margin-top: 40px;
+    margin-top: 60px;
+    font-size: 1rem;
   }
 }

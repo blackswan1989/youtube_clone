@@ -1,4 +1,5 @@
 extends layouts/main
+include mixins/videoBlock
 
 block content 
   .user-profile
@@ -16,9 +17,17 @@ block content
           .user-profile__btns
             a(href=`/users${routes.editProfile}`)
               button <i class="fas fa-user-edit"></i> Edit Profile
+  .user-profile__videos
+    each item in user.videos
+      +videoBlock({
+          id:item.id,
+          title:item.title,
+          views:item.views,
+          videoFile:item.fileUrl
+      })
 
     
-    
+//- each item in user.videos에서 user는 userController의 res.render("userDetail", { pageTitle: "User Detail", user });에서의 user를 뜻함. 
 //- models -> User -> "avatartUrl"을 의미
 
 //- express.use는 미들웨어인데

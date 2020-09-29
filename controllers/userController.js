@@ -25,7 +25,7 @@ export const postJoin = async (req, res, next) => {
       await User.register(user, password);
       next();
     } catch (error) {
-      console.log(error);
+      //console.log(error);
       res.redirect(routes.home);
       //- password가 일치하면 로그인이 되어 redirect를 해준다.
     }
@@ -94,7 +94,8 @@ export const userDetail = async (req, res) => {
     params: { id },
   } = req;
   try {
-    const user = await User.findById(id);
+    const user = await User.findById(id).papulate("videos");
+    //console.log(user);
     res.render("userDetail", { pageTitle: "User Detail", user });
   } catch (error) {
     res.redirect(routes.home);
