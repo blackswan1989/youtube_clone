@@ -1,9 +1,14 @@
 extends layouts/main
+include mixins/videoPlayer
 
 block content 
   .videoDetail
-    .video__player
-      video(src=`/${video.fileUrl}`)
+    .videoDetail__videoPlayer
+      +videoPlayer({
+        src:video.fileUrl
+      })
+    //- .video__player
+    //-   video(src=`/${video.fileUrl}`)
     .video__info
       .info__column
         h5.video__title=video.title
@@ -22,7 +27,7 @@ block content
             .like-button
               <i class="fas fa-thumbs-up"></i> 0
         .editVideo
-          if video.creator.id === loggedUser.id
+          if loggedUser && video.creator.id === loggedUser.id
             a(href=routes.editVideo(video.id)) Edit Video
     .video__comments
       if video.comments.legth === 1

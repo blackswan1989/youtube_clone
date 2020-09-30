@@ -18,20 +18,23 @@ Cloning Youtube with VanillaJS and NodeJS
 9/24 : review #2.18 ~ 2.25
 9/25 : challenge & #6.0 ~ 6.5
 9/27 : #6.6 ~ #6.10
-9/28 : #7.0 ~ #7.4
+9/28 : #7.0 ~ #7.3
+9/29 : #7.4
+9/30 : #8.0
 
 ## Pages:
 
-- [ ] Home
+- [x] Home
 - [x] Join
 - [x] Login
+- [x] Social Login
 - [x] Search
-- [ ] User Detail
+- [x] User Detail
 - [x] Edit Profile
-- [ ] Change Password
-- [ ] Upload
-- [ ] Video Detail
-- [ ] Edit Video
+- [x] Change Password
+- [x] Upload
+- [x] Video Detail
+- [x] Edit Video
 
 ## Server Start
 
@@ -43,5 +46,7 @@ Cloning Youtube with VanillaJS and NodeJS
 ## Data Base
 
 > use yourube > show collections > video
+
 > use yourube > db.users.find({})
+
 > use yourube > db.users.remove({}) || db.videos.remove({})

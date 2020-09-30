@@ -13,7 +13,7 @@ block content
           .profile__column--box
             <i class="far fa-envelope"></i>
             h2.profile__email=user.email
-        if user.id === loggedUser.id
+        if loggedUser && user.id === loggedUser.id
           .user-profile__btns
             a(href=`/users${routes.editProfile}`)
               button <i class="fas fa-user-edit"></i> Edit Profile
