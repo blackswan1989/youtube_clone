@@ -1,10 +1,12 @@
 const path = require("path");
+//path는 NodeJS와 함께 기본적으로 설치되는 유틸리티이다.
 const autoprefixer = require("Autoprefixer");
 const ExtractCSS = require("extract-text-webpack-plugin");
 
 const MODE = process.env.WEBPACK_ENV;
 const ENTRY_FILE = path.resolve(__dirname, "assets", "js", "main.js");
 const OUTPUT_DIR = path.join(__dirname, "static");
+//Entry(entry_file)와 Output(output_directory)의 차이점은
 // __dirname은 현재의 프로젝트 디렉토리 이름으로 어디에서든 접근 가능한 Node.js의 전역변수이다.
 //static이라는 폴더로 export(보내다)해준다.
 
@@ -47,7 +49,8 @@ const config = {
     ],
   },
   output: {
-    path: OUTPUT_DIR,
+    //output은 object여야 하므로 {}안에 작성해준다.
+    path: OUTPUT_DIR, //path는 경로를 의미
     filename: "[name].js",
   },
   plugins: [new ExtractCSS("styles.css")],

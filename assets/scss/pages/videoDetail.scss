@@ -5,22 +5,16 @@
   width: 100%;
   height: 120vh;
   min-width: 800px;
-  .video__player {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-top: 20px;
-    video {
-      width: 65%;
-      min-width: 300px;
-    }
+  .videoDetail__videoPlayer {
+    width: 70%;
+    // min-width: 300px;
+    margin-top: 30px;
   }
   .video__info {
     display: flex;
     justify-content: space-between;
-    width: 64.8%;
-    min-width: 300px;
+    width: 69%;
+    // min-width: 300px;
     margin-top: 10px;
     position: relative;
     .info__column {

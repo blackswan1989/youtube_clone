@@ -1,17 +1,17 @@
 mixin videoPlayer(video = {})
-  .videoPlayer
-    video(src=`/${video.src}`)
-    .videoPlayer__controls
-      .videoPlayer__column
-        span.videoPlayer__play
-          <i class="fas fa-play"></i>
-        span.videoPlayer__volume
-          <i class="fas fa-volume-up"></i>
-        span.videoPlayer__time
-          |00:00 / 10:00
-      .videoPlayer__column
-        span.videoPlayer__setting
-          <i class="fas fa-cog"></i>
-        span.videoPlayer__expand
-          <i class="fas fa-expand"></i>
+    .videoPlayer
+      video(src=`/${video.src}`)
+      .videoPlayer__controls
+        .videoPlayer__column
+          span.videoPlayer__play
+            <i class="fas fa-play"></i>
+          span.videoPlayer__volume
+            <i class="fas fa-volume-up"></i>
+          span.videoPlayer__time
+            |00:00 / 10:00
+        .videoPlayer__column
+          span.videoPlayer__setting
+            <i class="fas fa-cog"></i>
+          span.videoPlayer__expand
+            <i class="fas fa-expand"></i>
       
