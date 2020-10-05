@@ -1,13 +1,13 @@
 mixin videoPlayer(video = {})
-    .videoPlayer
+    .videoPlayer#jsVideoPlayer
       video(src=`/${video.src}`)
       .videoPlayer__controls
         .videoPlayer__column
-          span.videoPlayer__play
+          span#jsPlayButton
             <i class="fas fa-play"></i>
-          span.videoPlayer__volume
+          span
             <i class="fas fa-volume-up"></i>
-          span.videoPlayer__time
+          span
             |00:00 / 10:00
         .videoPlayer__column
           span.videoPlayer__setting
@@ -15,3 +15,6 @@ mixin videoPlayer(video = {})
           span.videoPlayer__expand
             <i class="fas fa-expand"></i>
       
+
+
+//- video(src=`/${video.src}`, autoplay)
