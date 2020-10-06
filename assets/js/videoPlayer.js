@@ -5,10 +5,11 @@ const {
 const videoContainer = document.getElementById("jsVideoPlayer");
 const videoPlayer = document.querySelector("#jsVideoPlayer video");
 const playBtn = document.getElementById("jsPlayButton");
-const volumnBtn = document.getElementById("jsVolumnBtn");
+const volumeBtn = document.getElementById("jsVolumeBtn");
 const fullScreenBtn = document.getElementById("jsFullScreen");
 const currentTime = document.getElementById("currentTime");
 const totalTime = document.getElementById("totalTime");
+const volumeRange = document.getElementById("jsVolume")
 
 
 // Video Player Play & Pause Part
@@ -25,15 +26,17 @@ function handlePlayClick() {
   }
 }
 
-// Video Player Volumn Part
+// Video Player Volume Part
 
-function handleVolumnClick() {
+function handleVolumeClick() {
   if (videoPlayer.muted) {
     videoPlayer.muted = false;
-    volumnBtn.innerHTML = '<i class="fas fa-volume-up"></i>'
+    volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>'
+    volumeRange.value = videoPlayer.volume //unmute하면 원래 음량range로
   } else {
     videoPlayer.muted = true;
-    volumnBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+    volumeBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+    volumeRange.value = 0; //mute되면 range value값이 0이 되도록.
   }
 }
 
@@ -92,7 +95,7 @@ const formatDate = seconds => {
 };
 
 function getCurrentTime() {
-  currentTime.innerHTML = formatDate(videoPlayer.currentTime);
+  currentTime.innerHTML = formatDate(Math.floor(videoPlayer.currentTime));
 }
 
 function setTotalTime() {
@@ -104,13 +107,39 @@ function setTotalTime() {
   setInterval(getCurrentTime, 1000)
 }
 
+function handleEnded() {
+  videoPlayer.currentTime = 0;
+  playBtn.innerHTML = '<i class="fas fa-play"></i>';
+}
+
+function handleDrag(event) {
+  //event가 어디서 발생했는지 알아야한다. console.log로 event를 체크해보면 target이 확인되고 target안에서 value값을 찾을 수 있다. 따라서 event.target.value로 이벤트를 가져올 수 있게 된다. 
+  //console.log(event.target.value);
+  const {
+    target: {
+      value
+    }
+  } = event;
+  videoPlayer.volume = value
+  if (value >= 0.4) {
+    volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>'
+  } else if (value >= 0.1) {
+    volumeBtn.innerHTML = '<i class="fas fa-volume-down"></i>'
+  } else {
+    volumeBtn.innerHTML = '<i class="fas fa-volume-off"></i>'
+  }
+}
+
 
 function init() {
   //해당 페이지에 있다는것을 체크하기 위함.
+  videoPlayer.volumn = 0.5;
   playBtn.addEventListener("click", handlePlayClick);
-  volumnBtn.addEventListener("click", handleVolumnClick);
+  volumeBtn.addEventListener("click", handleVolumeClick);
   fullScreenBtn.addEventListener("click", goFullScreen);
   videoPlayer.addEventListener("loadedmetadata", setTotalTime)
+  videoPlayer.addEventListener("ended", handleEnded)
+  volumeRange.addEventListener("input", handleDrag)
 }
 
 if (videoContainer) {
