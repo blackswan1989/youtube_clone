@@ -1,6 +1,7 @@
 const videoContainer = document.getElementById("jsVideoPlayer");
 const videoPlayer = document.querySelector("#jsVideoPlayer video");
 const playBtn = document.getElementById("jsPlayButton");
+const volumnBtn = document.getElementById("jsVolumnBtn")
 
 
 function handlePlayClick() {
@@ -15,8 +16,20 @@ function handlePlayClick() {
   }
 }
 
+function handleVolumnClick() {
+  if (videoPlayer.muted) {
+    videoPlayer.muted = false;
+    volumnBtn.innerHTML = '<i class="fas fa-volume-up"></i>'
+  } else {
+    videoPlayer.muted = true;
+    volumnBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+  }
+}
+
 function init() {
+  //해당 페이지에 있다는것을 체크하기 위함.
   playBtn.addEventListener("click", handlePlayClick);
+  volumnBtn.addEventListener("click", handleVolumnClick);
 }
 
 if (videoContainer) {
@@ -25,7 +38,10 @@ if (videoContainer) {
 
 
 //NOTE https://developer.mozilla.org/ko/docs/Web/api/HTMLmediaelement
-// HTMLMediaElement.paused 미디어 일시 정지 여부를 Boolean 값으로 반환합니다.
+//NOTE 속성(Properties)
+// HTMLMediaElement.paused 미디어 일시 정지 여부를 Boolean 값으로 반환합니다.(read only:값을 바꿀 수 없음)
+// HTMLMediaElement.muted 오디오 음소거 여부를 Boolean 값으로 반환합니다. 음소거라면 true 반대는 false 를 반환합니다.
+//NOTE 방법, 방식(method)-메소드
 // HTMLMediaElement.play() 미디어를 재생합니다.
 // HTMLMediaElement.pause() 미디어 재생을 일시 정지합니다.
 
