@@ -1,22 +1,26 @@
-const videoContainer = document.getElementById("jsVideoPlayer")
-const videoPlayer = document.querySelector("#jsVideoPlayer video")
-const playBtn = document.getElementById("jsPlayButton")
+const videoContainer = document.getElementById("jsVideoPlayer");
+const videoPlayer = document.querySelector("#jsVideoPlayer video");
+const playBtn = document.getElementById("jsPlayButton");
 
 
 function handlePlayClick() {
   if (videoPlayer.paused) {
-    videoPlayer.play()
+    videoPlayer.play();
+    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    //if Play중일때 -> innerHTML로 'pause' icon을 넣어준다
   } else {
-    videoPlayer.pause()
+    videoPlayer.pause();
+    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+    //esle pause중일때 -> innerHTML로 'play' icon을 넣어준다
   }
 }
 
 function init() {
-  playBtn.addEventListener("click", handlePlayClick)
+  playBtn.addEventListener("click", handlePlayClick);
 }
 
 if (videoContainer) {
-  init()
+  init();
 }
 
 
