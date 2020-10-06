@@ -1,9 +1,17 @@
+const {
+  doc
+} = require("prettier");
+
 const videoContainer = document.getElementById("jsVideoPlayer");
 const videoPlayer = document.querySelector("#jsVideoPlayer video");
 const playBtn = document.getElementById("jsPlayButton");
-const volumnBtn = document.getElementById("jsVolumnBtn")
-const fullScreenBtn = document.getElementById("jsFullScreen")
+const volumnBtn = document.getElementById("jsVolumnBtn");
+const fullScreenBtn = document.getElementById("jsFullScreen");
+const currentTime = document.getElementById("currentTime");
+const totalTime = document.getElementById("totalTime");
 
+
+// Video Player Play & Pause Part
 
 function handlePlayClick() {
   if (videoPlayer.paused) {
@@ -17,6 +25,8 @@ function handlePlayClick() {
   }
 }
 
+// Video Player Volumn Part
+
 function handleVolumnClick() {
   if (videoPlayer.muted) {
     videoPlayer.muted = false;
@@ -27,24 +37,80 @@ function handleVolumnClick() {
   }
 }
 
-function goFullScreen() {
-  videoContainer.webkitRequestFullscreen();
-  fullScreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
-  fullScreenBtn.removeEventListener("click", goFullScreen)
-}
+// Video Player Full Screen Part
 
 function exitFullScreen() {
   fullScreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
   fullScreenBtn.addEventListener("click", goFullScreen)
-  document.webkitExitFullscreen()
+  //For other browsers
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.mozCancelFullScreen) {
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) {
+    document.msExitFullscreen();
+  }
 }
+
+function goFullScreen() {
+  //For other browsers
+  if (videoContainer.requestFullscreen) {
+    videoContainer.requestFullscreen();
+  } else if (videoContainer.mozRequestFullScreen) {
+    videoContainer.mozRequestFullScreen();
+  } else if (videoContainer.webkitRequestFullscreen) {
+    videoContainer.webkitRequestFullscreen();
+  } else if (videoContainer.msRequestFullscreen) {
+    videoContainer.msRequestFullscreen();
+  }
+  fullScreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+  fullScreenBtn.removeEventListener("click", goFullScreen);
+  fullScreenBtn.addEventListener("click", exitFullScreen)
+}
+
+
+// Video Player Play Time Part
+
+const formatDate = seconds => {
+  const secondsNumber = parseInt(seconds, 10);
+  let hours = Math.floor(secondsNumber / 3600);
+  let minutes = Math.floor((secondsNumber - hours * 3600) / 60);
+  let totalSeconds = secondsNumber - hours * 3600 - minutes * 60;
+
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  if (seconds < 10) {
+    totalSeconds = `0${totalSeconds}`;
+  }
+  return `${hours}:${minutes}:${totalSeconds}`;
+};
+
+function getCurrentTime() {
+  currentTime.innerHTML = formatDate(videoPlayer.currentTime);
+}
+
+function setTotalTime() {
+  //videoPlayer와 duration을 가져온 후 formatData에 값을 주고 String을 반환시켜준다.
+  //그리고 totalTimeString을 totalTime안에 정의해준다.
+  const totalTimeString = formatDate(videoPlayer.duration)
+  totalTime.innerHTML = totalTimeString
+  //setInterval은 current time을 시계처럼 매초마다 호출되도록 해준다.
+  setInterval(getCurrentTime, 1000)
+}
+
 
 function init() {
   //해당 페이지에 있다는것을 체크하기 위함.
   playBtn.addEventListener("click", handlePlayClick);
   volumnBtn.addEventListener("click", handleVolumnClick);
   fullScreenBtn.addEventListener("click", goFullScreen);
-  fullScreenBtn.addEventListener("click", exitFullScreen);
+  videoPlayer.addEventListener("loadedmetadata", setTotalTime)
 }
 
 if (videoContainer) {
@@ -53,18 +119,21 @@ if (videoContainer) {
 
 
 //NOTE https://developer.mozilla.org/ko/docs/Web/api/HTMLmediaelement
-//NOTE 속성(Properties)
-// HTMLMediaElement.paused 미디어 일시 정지 여부를 Boolean 값으로 반환합니다.(read only:값을 바꿀 수 없음)
+//? 속성(Properties)
+// HTMLMediaElement.paused 미디어 일시 정지 여부를 Boolean 값으로 반환합니다.(Read only:값을 바꿀 수 없음)
 // HTMLMediaElement.muted 오디오 음소거 여부를 Boolean 값으로 반환합니다. 음소거라면 true 반대는 false 를 반환합니다.
-//NOTE 방법, 방식(method)-메소드
+// HTMLMediaElement.currentTime 현재 재생 시점을 초 단위로 표현한 double값입니다. 이 값을 세팅하여 재생 시점을 변경할 수 있습니다.
+// HTMLMediaElement.duration(Read only) 미디어의 전체 길이를 초 단위로 double 값으로 반환합니다. 재생 가능한 미디어가 없을 경우 0을 반환합니다.
+
+//? 방법, 방식(method)-메소드
 // HTMLMediaElement.play() 미디어를 재생합니다.
 // HTMLMediaElement.pause() 미디어 재생을 일시 정지합니다.
 
 //NOTE https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullScreen
 //NOTE https://developer.mozilla.org/en-US/docs/Web/API/Document/exitFullscreen
-//Element.requestFullscreen() & Document.exitFullscreen()
+//? Element.requestFullscreen() & Document.exitFullscreen()
 //play나 mute처럼 if & esle가 가능한 기능은 제공되지 않기 때문에 풀스크린(requestFullscreen) 확대(expand) 기능을 만들었다가, 다시 반대로 축소해서(compress) 나가는 기능(exitFullscreen)을 만들어야 한다.
-//webkit : 크롬에서 완전한 지원이 되지 않아 추가 입력. (webkitRequestFullscreen ,webkitExitFullscreen)
+//webkit : 크롬에서 완전한 지원이 되지 않아 추가 입력. (webkitRequestFullscreen, webkitExitFullscreen)
 
 /* NOTE 코드 설명
 자바스크립트 파일은 모든 페이지에 로드된다 footer 밑에 include되기 때문이다.
