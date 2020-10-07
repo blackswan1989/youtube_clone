@@ -19,10 +19,13 @@ const startRecording = async () => {
     videoPreview.srcObject = stream;
     videoPreview.muted = true;
     videoPreview.play();
+    recordBtn.innerHTML = '<i class="fas fa-stop-circle"></i> Stop Recording'
   } catch (error) {
     //media에 접근 권한을 통과하지 못한 경우 (record를 할 수 없는 경우)
     recordBtn.innerHTML = "😰 Can't Record"
-    recordBtn.removeEventListener("click", startRecording)
+  } finally {
+    //finally는 try나 catch 둘 중 하나가 실행되면 작동한다.
+    recordBtn.removeEventListener("click", startRecording);
   }
 }
 
