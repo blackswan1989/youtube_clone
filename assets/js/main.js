@@ -1,5 +1,6 @@
 import "../scss/styles.scss";
-import "./videoPlayer"
+import "./videoPlayer";
+import "./videoRecorder.js";
 
 // const something = async () => {
 //   console.log("something");

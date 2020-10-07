@@ -7,8 +7,6 @@ block content
       +videoPlayer({
         src:video.fileUrl
       })
-    //- .video__player
-    //-   video(src=`/${video.fileUrl}`)
     .video__info
       .info__column
         h5.video__title=video.title
@@ -34,3 +32,7 @@ block content
         span.video__comment-number comment 1
       else
         span.video__comment-number comments #{video.comments.length}
+
+
+//- .video__player
+//-   video(src=`/${video.fileUrl}`)
