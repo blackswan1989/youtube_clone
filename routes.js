@@ -27,9 +27,10 @@ const DELETE_VIDEO = "/:id/delete";
 const GITHUB = "/auth/github";
 const GITHUB_CALLBACK = "/auth/github/callback";
 
-// API | rendering하는 것이 아닌 view를 위한 router
+// API + AJAX | rendering하는 것이 아닌 view & comment를 위한 router
 const API = "/api";
 const REGISTER_VIEW = "/:id/view"
+const ADD_COMMENT = "/:id/comment"
 
 
 
@@ -77,6 +78,7 @@ const routes = {
   me: ME,
   api: API,
   registerView: REGISTER_VIEW,
+  addComment: ADD_COMMENT,
 };
 
 export default routes;
