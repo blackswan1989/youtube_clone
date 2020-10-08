@@ -7,12 +7,20 @@ export const home = async (req, res) => {
   //await는 async함수와 함께 사용해야만 한다.
   //try와 catch는 error가 생기면 화면은 띄워주되 console.log로 넘겨준다.
   try {
-    const videos = await Video.find({}).sort({ _id: -1 });
+    const videos = await Video.find({}).sort({
+      _id: -1,
+    });
     //.sort는 정렬해주는 함수이다 -1을 부여한것은 위아래 순서를 바꾸겠다는 의미이다.
-    res.render("home", { pageTitle: "Home", videos });
+    res.render("home", {
+      pageTitle: "Home",
+      videos,
+    });
   } catch (error) {
     //console.log(error);
-    res.render("home", { pageTitle: "Home", videos: [] });
+    res.render("home", {
+      pageTitle: "Home",
+      videos: [],
+    });
   }
 };
 
@@ -25,17 +33,26 @@ export const search = async (req, res) => {
   let videos = [];
   try {
     videos = await Video.find({
-      title: { $regex: searchingBy, $options: "i" },
+      title: {
+        $regex: searchingBy,
+        $options: "i",
+      },
     });
     // $regex: searchingBy는 완전히 동일한 단어가 아닌 검색한 단어를 포함하는 모든 것을 찾기 위함이고, $options: "i"는 검색시 대소문자 구분을 하지 않게 해준다.
   } catch (error) {
     console.log(error);
   }
-  res.render("search", { pageTitle: "Search", searchingBy, videos });
+  res.render("search", {
+    pageTitle: "Search",
+    searchingBy,
+    videos,
+  });
 };
 
 export const getUpload = (req, res) =>
-  res.render("upload", { pageTitle: "Upload" });
+  res.render("upload", {
+    pageTitle: "Upload",
+  });
 
 export const postUpload = async (req, res) => {
   const {
@@ -65,7 +82,10 @@ export const videoDetail = async (req, res) => {
   try {
     const video = await Video.findById(id).populate("creator");
     console.log(video);
-    res.render("videoDetail", { pageTitle: video.title, video });
+    res.render("videoDetail", {
+      pageTitle: video.title,
+      video,
+    });
   } catch (error) {
     //console.log(error);
     res.redirect(routes.home);
@@ -83,7 +103,10 @@ export const getEditVideo = async (req, res) => {
     if (video.creator != req.user.id) {
       throw Error();
     } else {
-      res.render("editVideo", { pageTitle: `Edit ${video.title}`, video });
+      res.render("editVideo", {
+        pageTitle: `Edit ${video.title}`,
+        video,
+      });
     }
   } catch (error) {
     res.redirect(routes.home);
@@ -96,7 +119,15 @@ export const postEditVideo = async (req, res) => {
     body: { title, description },
   } = req;
   try {
-    await Video.findOneAndUpdate({ _id: id }, { title, description });
+    await Video.findOneAndUpdate(
+      {
+        _id: id,
+      },
+      {
+        title,
+        description,
+      }
+    );
     res.redirect(routes.videoDetail(id)); //edit후 다시 videoDetail페이지로 redirect시켜준다.
   } catch (error) {
     res.redirect(routers.home);
@@ -114,12 +145,33 @@ export const deleteVideo = async (req, res) => {
     if (video.creator != req.user.id) {
       throw Error();
     } else {
-      await Video.findOneAndRemove({ _id: id });
+      await Video.findOneAndRemove({
+        _id: id,
+      });
     }
   } catch (error) {
     console.log(error);
   }
   res.redirect(routes.home);
+};
+
+// Register Video View
+
+export const postRegisterView = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  try {
+    const video = await Video.findById(id);
+    video.views = video.views + 1; //video.views += 1;
+    video.save();
+    res.status(200); //status code return
+  } catch (error) {
+    res.status(400);
+    res.end();
+  } finally {
+    res.end();
+  }
 };
 
 //각각의 controller들

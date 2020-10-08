@@ -67,7 +67,6 @@ const getVideo = async () => {
   }
 }
 
-
 function init() {
   recordBtn.addEventListener("click", getVideo);
 

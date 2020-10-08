@@ -9,7 +9,19 @@ const volumeBtn = document.getElementById("jsVolumeBtn");
 const fullScreenBtn = document.getElementById("jsFullScreen");
 const currentTime = document.getElementById("currentTime");
 const totalTime = document.getElementById("totalTime");
-const volumeRange = document.getElementById("jsVolume")
+const volumeRange = document.getElementById("jsVolume");
+
+const registerView = () => {
+  //split는 서로 나눠준다(콘솔에 window.location.href.split("4000")등을 입력해보자
+  //.split("/videos/")[1]에서 "[1]"은 split된 두번째 것(id)을 선택하기 위함이다.
+  /* (2) ["http://localhost:", "/videos/5f7be38929ef3b60fae5c0fe"]
+      0: "http://localhost:"
+      1: "/videos/5f7be38929ef3b60fae5c0fe" -> id */
+  const videoId = window.location.href.split("/videos/")[1]
+  fetch(`/api/${videoId}/view`, {
+    method: "POST"
+  })
+}
 
 
 // Video Player Play & Pause Part
@@ -108,6 +120,7 @@ function setTotalTime() {
 }
 
 function handleEnded() {
+  registerView()
   videoPlayer.currentTime = 0;
   playBtn.innerHTML = '<i class="fas fa-play"></i>';
 }
@@ -137,9 +150,9 @@ function init() {
   playBtn.addEventListener("click", handlePlayClick);
   volumeBtn.addEventListener("click", handleVolumeClick);
   fullScreenBtn.addEventListener("click", goFullScreen);
-  videoPlayer.addEventListener("loadedmetadata", setTotalTime)
-  videoPlayer.addEventListener("ended", handleEnded)
-  volumeRange.addEventListener("input", handleDrag)
+  videoPlayer.addEventListener("loadedmetadata", setTotalTime);
+  videoPlayer.addEventListener("ended", handleEnded);
+  volumeRange.addEventListener("input", handleDrag);
 }
 
 if (videoContainer) {
