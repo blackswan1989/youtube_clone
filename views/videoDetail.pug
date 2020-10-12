@@ -29,14 +29,18 @@ block content
             a(href=routes.editVideo(video.id)) Edit Video
     .video__comments
       if video.comments.legth === 1
-        span.video__comment-number comment 1
+        span.video__comment-number
+          |  comment
+          span#jsCommentNumber 1
       else
-        span.video__comment-number comments #{video.comments.length}
+        span.video__comment-number 
+          |  comments 
+          span#jsCommentNumber=video.comments.length 
       form.add__comment#jsAddComment
         a.video__author__creator(href=routes.userDetail(video.creator.id))=video.creator.name
         input(type="text", placeholder="add a comment...")
-      ul.video__comment-list
-        each comment in video.comments
+      ul.video__comment-list#jsCommentList
+        each comment in video.comments.reverse()
             li
               a.video__author__creator(href=routes.userDetail(video.creator.id))=video.creator.name
               span=comment.text
@@ -44,3 +48,5 @@ block content
 
 //- .video__player
 //-   video(src=`/${video.fileUrl}`)
+
+//- each comment in video.comments.reverse()에서 .reverse()는 array method중 하나로 순서를 뒤집어준다.
