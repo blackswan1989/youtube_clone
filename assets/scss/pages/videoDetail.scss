@@ -3,7 +3,8 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 120vh;
+  min-height: 150vh;
+  height: auto;
   min-width: 800px;
 
   .videoDetail__videoPlayer {

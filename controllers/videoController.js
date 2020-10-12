@@ -90,8 +90,8 @@ export const videoDetail = async (req, res) => {
     },
   } = req;
   try {
-    const video = await (await Video.findById(id).populate("creator")).populate("comments");
-    console.log(video);
+    const video = await Video.findById(id).populate("creator").populate("comments");
+    //console.log(video);
     res.render("videoDetail", {
       pageTitle: video.title,
       video,
@@ -210,14 +210,14 @@ export const postAddComment = async (req, res) => {
       text: comment,
       creator: user.id
     });
-    video.comment.push(newComment.id);
+    video.comments.push(newComment.id);
     video.save();
   } catch (error) {
     res.status(400);
   } finally {
-    res.end()
+    res.end();
   }
-}
+};
 
 //각각의 controller들
 //search는 req,res를 함수의 인자로 입력받고 res.send("Search")로 리턴한다. 따라서 home과 search둘다 export해주어야 한다.

@@ -33,10 +33,12 @@ block content
       else
         span.video__comment-number comments #{video.comments.length}
       form.add__comment#jsAddComment
-        input(type="text", placeholder="Add a comment")
+        a.video__author__creator(href=routes.userDetail(video.creator.id))=video.creator.name
+        input(type="text", placeholder="add a comment...")
       ul.video__comment-list
+        a.video__author__creator(href=routes.userDetail(video.creator.id))=video.creator.name
         each comment in video.comments
-          span comment.text
+          span=comment.text
 
 
 //- .video__player
