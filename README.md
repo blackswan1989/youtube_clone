@@ -42,4 +42,4 @@ Cloning Youtube in Full-Stack
 
 ### Design
 
-- [x] 99% same as YouTube&reg; with SCSS
+- [x] reference YouTube&reg; with SCSS
