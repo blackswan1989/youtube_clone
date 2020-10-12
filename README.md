@@ -26,6 +26,8 @@ Cloning Youtube with VanillaJS and NodeJS
 10/7 : #9.0 ~ #9.2 & JSchallenge
 10/8 : #10.0 ~ #10.2 & JSchallege
 10/9 : JSchallenge
+10/10 : #10.3 ~ #10.5
+10/12 : #11.0 ~ #11.9 finish
 
 ## Pages:
 

@@ -36,9 +36,10 @@ block content
         a.video__author__creator(href=routes.userDetail(video.creator.id))=video.creator.name
         input(type="text", placeholder="add a comment...")
       ul.video__comment-list
-        a.video__author__creator(href=routes.userDetail(video.creator.id))=video.creator.name
         each comment in video.comments
-          span=comment.text
+            li
+              a.video__author__creator(href=routes.userDetail(video.creator.id))=video.creator.name
+              span=comment.text
 
 
 //- .video__player

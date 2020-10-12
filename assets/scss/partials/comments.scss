@@ -14,16 +14,10 @@
     align-items: center;
     margin-top: 20px;
     margin-bottom: 40px;
-    font-size: 22px;
-
-    .video__author__creator {
-      margin-right: 10px;
-
-    }
 
     input {
-      font-size: 20px;
-      width: 500px;
+      font-size: 16px;
+      width: 100%;
       color: $font;
       background-color: transparent;
       border: none;
@@ -35,15 +29,31 @@
   .video__comment-list {
     width: 100%;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 
-    .video__author__creator {
-      font-size: 16px;
-      margin-right: 10px;
-      border: 1px solid $black;
-      padding: 9px 7px;
-      background-color: $font;
-      border-radius: 5px;
+    li {
+      margin-top: 35px;
+
+      &:first-child {
+        margin-top: 0px;
+      }
+
+      &:last-child {
+        margin-bottom: 15px;
+      }
     }
+
+  }
+
+  .video__author__creator {
+    text-align: center;
+    min-width: 40px;
+    font-size: 1.5vw;
+    margin-right: 10px;
+    border: 1px solid $font;
+    padding: 9px 7px;
+    color: $font;
+    border-radius: 5px;
   }
 }
