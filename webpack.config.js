@@ -15,14 +15,11 @@ const config = {
   entry: ["@babel/polyfill", ENTRY_FILE],
   mode: MODE,
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.(js)$/,
-        use: [
-          {
-            loader: "babel-loader",
-          },
-        ],
+        use: [{
+          loader: "babel-loader",
+        }, ],
       },
       {
         test: /\.(scss)$/,
@@ -36,7 +33,9 @@ const config = {
             options: {
               postcssOptions: {
                 plugins() {
-                  return [autoprefixer({ browsers: "cover 99.5%" })];
+                  return [autoprefixer({
+                    browsers: "cover 99.5%"
+                  })];
                 },
               },
             },

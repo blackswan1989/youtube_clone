@@ -64,11 +64,12 @@ export const postUpload = async (req, res) => {
       description
     },
     file: {
-      path
+      location // path -> AWS S3설치 후 location으로 변경(console.log(req.file)로 확인)
     },
   } = req;
+  //console.log(req.file);
   const newVideo = await Video.create({
-    fileUrl: path,
+    fileUrl: location, //path -> AWS S3설치 후 location으로 변경
     title,
     description,
     creator: req.user.id,

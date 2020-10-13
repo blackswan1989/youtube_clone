@@ -4,7 +4,8 @@ include mixins/videoBlock
 block content 
   .user-profile
     .user-profile__header
-      img.avatar(src=`/${user.avatarUrl}`) 
+      img.avatar(src=user.avatarUrl) 
+      //- (src=`/${user.avatarUrl}`) 
       .header__column
         .profile__column
           .profile__column--box

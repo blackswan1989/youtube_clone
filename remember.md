@@ -2,7 +2,7 @@
 
 ## 비디오 샘플 다운로드 | https://file-examples.com/index.php/sample-video-files/sample-mp4-files/
 
-# nodemon
+## nodemon
 
 https://www.npmjs.com/package/nodemon
 npm install nodemon -D -> "nodemon --exec" script에 추가
@@ -17,7 +17,7 @@ npm install nodemon -D -> "nodemon --exec" script에 추가
 
 nodemon = 프로젝트가 아닌 개발자에게 유용한 것 -> 라이브 서버 확장프로그램 처럼 저장할때마다 서버 새로고침 시켜준다.
 
-# npm install morgan
+## npm install morgan
 
 import morgan from "morgan";
 
@@ -25,7 +25,7 @@ https://www.npmjs.com/package/morgan
 
 index.js -> app.use(morgan("dev"))
 
-# npm install helmet 보안을 위한 express
+## npm install helmet 보안을 위한 express
 
 https://www.npmjs.com/package/helmet
 
@@ -37,7 +37,7 @@ const app = express();
 
 app.use(helmet());
 
-# npm install cookie-parser
+## npm install cookie-parser
 
 seccsion을 다루기 위해 cookie에 유저 정보를 저장해준다.
 
@@ -45,7 +45,7 @@ import cookieParser from "cookie-parser";
 
 app.use(cookieParser())
 
-# npm install body-parser
+## npm install body-parser
 
 body로 부터 정보를 얻을 수 있게 해준다.
 
@@ -54,7 +54,7 @@ import bodyParser from "body-parser"
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 
-# pug
+## pug
 
 var express = require("express");
 var app = express()
@@ -66,7 +66,7 @@ app.get("title"); //"My Site"
 view engine 설정을 바꿀 예정.
 view engine 설정의 기본값은 undefined이다.
 
-# 3.0 mongodb (database)
+## 3.0 mongodb (database)
 
 1. mongodb
    설치방법 & 실행/종료 방법
@@ -85,7 +85,7 @@ view engine 설정의 기본값은 undefined이다.
    npm install dotenv
    파일명 : .env (작성시 띄어쓰기 주의!)
 
-# multer (for video upload "URL") - middleware
+## multer (for video upload "URL") - middleware
 
 https://github.com/expressjs/multer/blob/master/doc/README-ko.md
 
@@ -176,7 +176,23 @@ https://github.com/settings/applications/1383396
 
 ## 6.10 2:28 ~ #6.12 FACEBOOK 인증 기능 PASS
 
-# 10.1 API Register a View
+## 10.1 API Register a View
 
 npm install axios
 fetch("URL")
+
+## 11.0 ~ 11.1 AWS S3
+
+- https://console.aws.amazon.com/s3/buckets/yourtube-clone/?region=ap-northeast-2&tab=permissions
+- AWS 가입 & S3 Public Bucket 생성
+- AWS IAM서비스 -> USER 만들기 -> 프로그래밍 방식 액세스 -> 기존 정책 직접 연결 -> S3검색 -> AmazonS3FullAccess
+- 생성시 KEY .env에 바로 저장해주기(해당 화면 닫기 이후 다시 볼 수 없음)
+- 설치 : npm i aws-skd multer-s3
+- 추가 코드 작성
+
+## 11.2 Blob Duration Bug
+
+- 직접 recording한 동영상의 전체 길이를 불러오지 못하는 에러 해결 위함.
+- 공식문서 : https://www.npmjs.com/package/get-blob-duration
+- 설치 : npm install get-blob-duration
+- videoPlayer.js -> setTotalTime 코드 추가

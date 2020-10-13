@@ -2,17 +2,17 @@
 
 Cloning Youtube in Full-Stack
 
-#### 🌇Front-end : Pug + SCSS + Vanilla JS(ES6) + WebPack
+#### 🌇 Front-end : Pug + SCSS + Vanilla JS(ES6) + WebPack
 
-#### ⚙️Back-end : Node.js(Express)
+#### ⚙ Back-end : Node.js(Express)
 
-#### 🔐Authentication : Passport
+#### 🔐 Authentication : Passport
 
-#### 🛢Database : MongoDB(Atlas)
+#### 📦 Database : MongoDB(Atlas)
 
-#### 📂Storage : AWS S3
+#### 📂 Storage : AWS S3
 
-#### 📤Server : Heroku
+#### 📤 Server : Heroku
 
 ---
 
@@ -22,13 +22,12 @@ Cloning Youtube in Full-Stack
 
 - [x] Home : Fetch all videos in Database
 - [x] Search : Search for videos or users by user's query in Database
-- [x] Preview : Hover over each video let users see preview on client-side
-- [x] Subscribe : Subscribe or unsubscribe in real-time
+- [x] CustomPlayer : Build a custom video player
 
 ### User
 
-- [x] Join : Passport Local/Kakao/Github
-- [x] Login : Passport Local/Kakao/Github
+- [x] Join : Passport Local/Github
+- [x] Login : Passport Local/Github
 - [x] Profile : Access to each user's profile page
 - [x] Edit : Customize personal information
 
