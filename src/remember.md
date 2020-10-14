@@ -211,3 +211,4 @@ fetch("URL")
 - git push heroku master 입력하여 heruku에 push 해준다.
 - 위 진행하면 나오는 https://powerful-waters-23262.herokuapp.com/ 주소접속
 - heroku logs --tail 에러확인 -> Build Error -> Define a Procfile 참조
+- 수정시 git commit이후 -> vscode 터미널에 git push heroku master 입력해주기
