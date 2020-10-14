@@ -1,6 +1,5 @@
 //TODO appliecation에 관련된 코드들이 담겨있다.
 //express를 import했고, express를 실행한 결과를 app상수로 만들어주었다. 그리고 middleware들을 추가해주었다.
-
 import express from "express";
 import morgan from "morgan";
 import helmet from "helmet";
@@ -9,6 +8,7 @@ import bodyParser from "body-parser";
 import passport from "passport"; // passport middleware
 import mongoose from "mongoose";
 import session from "express-session";
+import path from "path";
 import MongoStore from "connect-mongo";
 import {
   localsMiddleware
@@ -17,7 +17,7 @@ import routes from "./routes";
 import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
-import apiRouter from "./routers/apiRouter"
+import apiRouter from "./routers/apiRouter";
 
 import "./passport";
 
@@ -28,13 +28,16 @@ const CookieStore = MongoStore(session);
 //middlewares
 app.use(helmet());
 app.set("view engine", "pug"); //express view engine으로 pug사용 (express는 views폴더를 기본 디렉토리로 찾는다.)
-app.use("/uploads", express.static("uploads")); //static: 주어진 directory에서 file을 전달하는 새로운 middleware function
-app.use("/static", express.static("static"));
+app.set("views", path.join(__dirname, "views"));
+// app.use("/uploads", express.static("uploads")); //static: 주어진 directory에서 file을 전달하는 새로운 middleware function | s3설치 후 주석처리
+app.use("/static", express.static(path.join(__dirname, "static")));
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 app.use(morgan("dev"));
 app.use(
   session({
@@ -46,7 +49,7 @@ app.use(
     resave: true,
     saveUninitialized: false,
     store: new CookieStore({
-      mongooseConnection: mongoose.connection
+      mongooseConnection: mongoose.connection,
     }),
     //CookieStore와 mongo를 연결시켜주어야한다.
   })
@@ -62,7 +65,7 @@ app.use(localsMiddleware); //local변수를 global변수로 사용하도록 만�
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
-app.use(routes.api, apiRouter)
+app.use(routes.api, apiRouter);
 
 export default app; //누군가가 내 파일을 import로 불러올때 app object를 주겠다는 의미.
 

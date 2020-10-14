@@ -1,6 +1,7 @@
 // NOTE app.js에서 import한 application이 있다.
 // NOTE appliecation에 관련된 코드들은 app.js파일에 담겨있다.
 
+import "@babel/polyfill";
 import dotenv from "dotenv";
 import "./db";
 import app from "./app";

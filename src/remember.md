@@ -196,3 +196,18 @@ fetch("URL")
 - 공식문서 : https://www.npmjs.com/package/get-blob-duration
 - 설치 : npm install get-blob-duration
 - videoPlayer.js -> setTotalTime 코드 추가
+
+## 11.5 Building for Production
+
+- @babel -cli 설치 후 진행
+- babel과 관련된 에러날 경우 babel/core, babel/node 둘다 재설치해보기.
+
+## 11.6 Heroku deploying
+
+- https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
+- Set up -> 설치 | brew install heroku/brew/heroku
+- 앱생성: heroku create(heroku 로그인하라는 메세지뜨면 로그인 후 다시 진행)
+- Deploy the app 참조
+- git push heroku master 입력하여 heruku에 push 해준다.
+- 위 진행하면 나오는 https://powerful-waters-23262.herokuapp.com/ 주소접속
+- heroku logs --tail 에러확인 -> Build Error -> Define a Procfile 참조
