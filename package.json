@@ -6,7 +6,7 @@
   "author": "Blackswan1989",
   "license": "ISC",
   "engines": {
-    "node": "12.18.3"
+    "node": "12.16.2"
   },
   "dependencies": {
     "@babel/cli": "^7.11.6",
@@ -51,7 +51,7 @@
     "copyAll": "cp -R src/static build && cp -R src/views build",
     "build": "npm run build:server && npm run build:assets && npm run copyAll",
     "prebuild": "rm -rf build",
-    "tunnel": "lt --port 4000"
+    "tunnel": "lt --port 4000",
   },
   "devDependencies": {
     "eslint": "^7.9.0",
