@@ -205,6 +205,7 @@ fetch("URL")
 ## 11.6 Heroku deploying
 
 - https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
+- 참조 블로그 | https://viewingsunset.tistory.com/7
 - Set up -> 설치 | brew install heroku/brew/heroku
 - 앱생성: heroku create(heroku 로그인하라는 메세지뜨면 로그인 후 다시 진행)
 - git remote -v 로 정상 확인
