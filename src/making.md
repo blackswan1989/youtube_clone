@@ -28,6 +28,7 @@ Cloning Youtube with VanillaJS and NodeJS
 10/9 : JSchallenge
 10/10 : #10.3 ~ #10.5 finish
 10/12 : #11.8 ~ #11.9 BONUS
+10/13 : #11.4 ~ #11.5 Heroku
 
 ## Pages:
 
