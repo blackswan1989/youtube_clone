@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import "./models/Video";
 
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect(process.env.MONGO, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
   useFindAndModify: false,
