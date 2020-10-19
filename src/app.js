@@ -26,7 +26,9 @@ const app = express(); //app 상수
 const CookieStore = MongoStore(session);
 
 //middlewares
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: false
+}));
 app.set("view engine", "pug"); //express view engine으로 pug사용 (express는 views폴더를 기본 디렉토리로 찾는다.)
 app.set("views", path.join(__dirname, "views"));
 // app.use("/uploads", express.static("uploads")); //static: 주어진 directory에서 file을 전달하는 새로운 middleware function | s3설치 후 주석처리
