@@ -24,10 +24,22 @@ const handleVideoData = event => {
   link.click();
 };
 
+function stopStreamedVideo(videoElem) {
+  const stream = videoElem.srcObject;
+  const tracks = stream.getTracks();
+
+  tracks.forEach(function (track) {
+    track.stop()
+  });
+
+  videoElem.srcObject = null;
+}
+
 const stopRecording = () => {
   videoRecorder.stop();
   recordBtn.removeEventListener("click", stopRecording);
   recordBtn.addEventListener("click", getVideo);
+  stopStreamedVideo(videoPreview);
   recordBtn.innerHTML = '<i class="fas fa-play-circle"></i> Start Recording';
 }
 
