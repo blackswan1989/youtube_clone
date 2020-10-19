@@ -50,6 +50,7 @@ Cloning Youtube with VanillaJS and NodeJS
 - npm run dev:assets (different console) // webpack
 - brew services run mongodb-community // mongoDB실행
 - mongo & mongod 실행시켜 mongoDB 정상작동 확인해주기.
+- npm start | heroku
 - npm run build && npm run start | #11.5 이후
 
 ## Data Base
