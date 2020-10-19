@@ -2,6 +2,8 @@ extends layouts/main
 
 block content
     .form-container
+        div.form__icon 
+            <i class="fab fa-youtube"></i>
         h1.join__title YourTube Create an Account
         form.form(action=routes.join, method="post")
             input(type="text", name="name", placeholder="Full Name",required=true)        
