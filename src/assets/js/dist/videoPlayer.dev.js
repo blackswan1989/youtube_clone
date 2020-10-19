@@ -1,59 +1,56 @@
-const videoContainer = document.getElementById("jsVideoPlayer");
-const videoPlayer = document.querySelector("#jsVideoPlayer video");
-const playBtn = document.getElementById("jsPlayButton");
-const volumeBtn = document.getElementById("jsVolumeBtn");
-const fullScreenBtn = document.getElementById("jsFullScreen");
-const currentTime = document.getElementById("currentTime");
-const totalTime = document.getElementById("totalTime");
-const volumeRange = document.getElementById("jsVolume");
+"use strict";
 
-const registerView = () => {
+var videoContainer = document.getElementById("jsVideoPlayer");
+var videoPlayer = document.querySelector("#jsVideoPlayer video");
+var playBtn = document.getElementById("jsPlayButton");
+var volumeBtn = document.getElementById("jsVolumeBtn");
+var fullScreenBtn = document.getElementById("jsFullScreen");
+var currentTime = document.getElementById("currentTime");
+var totalTime = document.getElementById("totalTime");
+var volumeRange = document.getElementById("jsVolume");
+
+var registerView = function registerView() {
   //split는 서로 나눠준다(콘솔에 window.location.href.split("4000")등을 입력해보자
   //.split("/videos/")[1]에서 "[1]"은 split된 두번째 것(id)을 선택하기 위함이다.
+
   /* (2) ["http://localhost:", "/videos/5f7be38929ef3b60fae5c0fe"]
       0: "http://localhost:"
       1: "/videos/5f7be38929ef3b60fae5c0fe" -> id */
-  const videoId = window.location.href.split("/videos/")[1]
-  fetch(`/api/${videoId}/view`, {
+  var videoId = window.location.href.split("/videos/")[1];
+  fetch("/api/".concat(videoId, "/view"), {
     method: "POST"
-  })
-}
+  });
+}; // Video Player Play & Pause Part
 
-
-// Video Player Play & Pause Part
 
 function handlePlayClick() {
   if (videoPlayer.paused) {
     videoPlayer.play();
-    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-    //if Play중일때 -> innerHTML로 'pause' icon을 넣어준다
+    playBtn.innerHTML = '<i class="fas fa-pause"></i>'; //if Play중일때 -> innerHTML로 'pause' icon을 넣어준다
   } else {
     videoPlayer.pause();
-    playBtn.innerHTML = '<i class="fas fa-play"></i>';
-    //esle pause중일때 -> innerHTML로 'play' icon을 넣어준다
+    playBtn.innerHTML = '<i class="fas fa-play"></i>'; //esle pause중일때 -> innerHTML로 'play' icon을 넣어준다
   }
-}
+} // Video Player Volume Part
 
-// Video Player Volume Part
 
 function handleVolumeClick() {
   if (videoPlayer.muted) {
     videoPlayer.muted = false;
-    volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>'
-    volumeRange.value = videoPlayer.volume //unmute하면 원래 음량range로
+    volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
+    volumeRange.value = videoPlayer.volume; //unmute하면 원래 음량range로
   } else {
     videoPlayer.muted = true;
     volumeBtn.innerHTML = '<i class="fas fa-volume-mute"></i>';
     volumeRange.value = 0; //mute되면 range value값이 0이 되도록.
   }
-}
+} // Video Player Full Screen Part
 
-// Video Player Full Screen Part
 
 function exitFullScreen() {
   fullScreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
-  fullScreenBtn.addEventListener("click", goFullScreen)
-  //For other browsers
+  fullScreenBtn.addEventListener("click", goFullScreen); //For other browsers
+
   if (document.exitFullscreen) {
     document.exitFullscreen();
   } else if (document.mozCancelFullScreen) {
@@ -76,30 +73,32 @@ function goFullScreen() {
   } else if (videoContainer.msRequestFullscreen) {
     videoContainer.msRequestFullscreen();
   }
+
   fullScreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
   fullScreenBtn.removeEventListener("click", goFullScreen);
-  fullScreenBtn.addEventListener("click", exitFullScreen)
-}
+  fullScreenBtn.addEventListener("click", exitFullScreen);
+} // Video Player Play Time Part
 
 
-// Video Player Play Time Part
-
-const formatDate = seconds => {
-  const secondsNumber = parseInt(seconds, 10);
-  let hours = Math.floor(secondsNumber / 3600);
-  let minutes = Math.floor((secondsNumber - hours * 3600) / 60);
-  let totalSeconds = secondsNumber - hours * 3600 - minutes * 60;
+var formatDate = function formatDate(seconds) {
+  var secondsNumber = parseInt(seconds, 10);
+  var hours = Math.floor(secondsNumber / 3600);
+  var minutes = Math.floor((secondsNumber - hours * 3600) / 60);
+  var totalSeconds = secondsNumber - hours * 3600 - minutes * 60;
 
   if (hours < 10) {
-    hours = `0${hours}`;
+    hours = "0".concat(hours);
   }
+
   if (minutes < 10) {
-    minutes = `0${minutes}`;
+    minutes = "0".concat(minutes);
   }
+
   if (seconds < 10) {
-    totalSeconds = `0${totalSeconds}`;
+    totalSeconds = "0".concat(totalSeconds);
   }
-  return `${hours}:${minutes}:${totalSeconds}`;
+
+  return "".concat(hours, ":").concat(minutes, ":").concat(totalSeconds);
 };
 
 function getCurrentTime() {
@@ -109,14 +108,14 @@ function getCurrentTime() {
 function setTotalTime() {
   //videoPlayer와 duration을 가져온 후 formatData에 값을 주고 String을 반환시켜준다.
   //그리고 totalTimeString을 totalTime안에 정의해준다.
-  const totalTimeString = formatDate(videoPlayer.duration)
-  totalTime.innerHTML = totalTimeString
-  //setInterval은 current time을 시계처럼 매초마다 호출되도록 해준다.
-  setInterval(getCurrentTime, 1000)
+  var totalTimeString = formatDate(videoPlayer.duration);
+  totalTime.innerHTML = totalTimeString; //setInterval은 current time을 시계처럼 매초마다 호출되도록 해준다.
+
+  setInterval(getCurrentTime, 1000);
 }
 
 function handleEnded() {
-  registerView()
+  registerView();
   videoPlayer.currentTime = 0;
   playBtn.innerHTML = '<i class="fas fa-play"></i>';
 }
@@ -124,21 +123,17 @@ function handleEnded() {
 function handleDrag(event) {
   //event가 어디서 발생했는지 알아야한다. console.log로 event를 체크해보면 target이 확인되고 target안에서 value값을 찾을 수 있다. 따라서 event.target.value로 이벤트를 가져올 수 있게 된다. 
   //console.log(event.target.value);
-  const {
-    target: {
-      value
-    }
-  } = event;
-  videoPlayer.volume = value
+  var value = event.target.value;
+  videoPlayer.volume = value;
+
   if (value >= 0.4) {
-    volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>'
+    volumeBtn.innerHTML = '<i class="fas fa-volume-up"></i>';
   } else if (value >= 0.1) {
-    volumeBtn.innerHTML = '<i class="fas fa-volume-down"></i>'
+    volumeBtn.innerHTML = '<i class="fas fa-volume-down"></i>';
   } else {
-    volumeBtn.innerHTML = '<i class="fas fa-volume-off"></i>'
+    volumeBtn.innerHTML = '<i class="fas fa-volume-off"></i>';
   }
 }
-
 
 function init() {
   //해당 페이지에 있다는것을 체크하기 위함.
@@ -153,20 +148,15 @@ function init() {
 
 if (videoContainer) {
   init();
-}
-
-
-//NOTE https://developer.mozilla.org/ko/docs/Web/api/HTMLmediaelement
+} //NOTE https://developer.mozilla.org/ko/docs/Web/api/HTMLmediaelement
 //? 속성(Properties)
 // HTMLMediaElement.paused 미디어 일시 정지 여부를 Boolean 값으로 반환합니다.(Read only:값을 바꿀 수 없음)
 // HTMLMediaElement.muted 오디오 음소거 여부를 Boolean 값으로 반환합니다. 음소거라면 true 반대는 false 를 반환합니다.
 // HTMLMediaElement.currentTime 현재 재생 시점을 초 단위로 표현한 double값입니다. 이 값을 세팅하여 재생 시점을 변경할 수 있습니다.
 // HTMLMediaElement.duration(Read only) 미디어의 전체 길이를 초 단위로 double 값으로 반환합니다. 재생 가능한 미디어가 없을 경우 0을 반환합니다.
-
 //? 방법, 방식(method)-메소드
 // HTMLMediaElement.play() 미디어를 재생합니다.
 // HTMLMediaElement.pause() 미디어 재생을 일시 정지합니다.
-
 //NOTE https://developer.mozilla.org/en-US/docs/Web/API/Element/requestFullScreen
 //NOTE https://developer.mozilla.org/en-US/docs/Web/API/Document/exitFullscreen
 //? Element.requestFullscreen() & Document.exitFullscreen()

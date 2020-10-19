@@ -197,15 +197,23 @@ fetch("URL")
 - 설치 : npm install get-blob-duration
 - videoPlayer.js -> setTotalTime 코드 추가
 
+## 11.4 MongoLab
+
+> Connect to Cluster0 User Name : yourtubeadmin
+> Connect to Cluster0 User PW : yourtube2020
+> 기존 MONGO_URL="mongodb://localhost:27017/yourtube"에서 아래 코드로 수정
+> mongodb+srv://yourtubeadmin:<password>@cluster0.bdhuo.mongodb.net/<dbname>?retryWrites=true&w=majority
+
 ## 11.5 Building for Production
 
 - @babel -cli 설치 후 진행
 - babel과 관련된 에러날 경우 babel/core, babel/node 둘다 재설치해보기.
 
-## 11.6 Heroku deploying
+## 11.6 Heroku deploying Part ONE
 
-- https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
-- 참조 블로그 | https://viewingsunset.tistory.com/7
+https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
+참조 블로그 | https://viewingsunset.tistory.com/7
+
 - Set up -> 설치 | brew install heroku/brew/heroku
 - 앱생성: heroku create(heroku 로그인하라는 메세지뜨면 로그인 후 다시 진행)
 - git remote -v 로 정상 확인
@@ -217,3 +225,16 @@ fetch("URL")
 - 위 진행하면 나오는 ex)https://powerful-waters-23262.herokuapp.com/ 주소접속
 - heroku logs --tail 에러확인 -> Build Error -> Define a Procfile 참조
 - 수정시 git commit이후 -> vscode 터미널에 git push heroku master 입력해주기
+
+NOTE 생성된 주소 : https://quiet-waters-83386.herokuapp.com
+
+## 11.7 Heroku deploying Part TWO
+
+http://github.com/xavdid/heroku-config
+
+> 설치 : heroku plugins:install heroku-config
+
+- heroku config:pull: Writes the contents of heroku config into a local file
+- heroku config:push: Writes the contents of a local file into heroku config
+  (heroku config:push 하면 local 파일을 heroku config로 push해주는 기능이다.)
+  > heroku config를 입력하면 .env 변수들을 확인 할 수 있다.

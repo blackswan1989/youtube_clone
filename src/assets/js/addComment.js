@@ -1,7 +1,4 @@
 import axios from "axios";
-import {
-  doc
-} from "prettier";
 
 const addCommentForm = document.getElementById("jsAddComment");
 const commentList = document.getElementById("jsCommentList")

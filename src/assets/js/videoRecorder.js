@@ -1,10 +1,6 @@
 //TODO Upload Page의 Video Record기능
 //media를 user로 부터 얻어와서 video에 넣어준다.
 
-const {
-  doc
-} = require("prettier");
-
 const recorderContainer = document.getElementById("jsrecorderContainer");
 const recordBtn = document.getElementById("jsRecordBtn");
 const videoPreview = document.getElementById("jsRecordVideoPreview");
