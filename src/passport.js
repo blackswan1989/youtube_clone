@@ -14,7 +14,7 @@ passport.use(
   new GithubStrategy({
       clientID: process.env.GH_ID,
       clientSecret: process.env.GH_SECRET,
-      callbackURL: process.env.PRODUCTION ? `https://polar-sea-27980.herokuapp.com${routes.githubCallback}` : `http://localhost:4000${routes.githubCallback}`,
+      callbackURL: process.env.PRODUCTION ? `https://quiet-waters-83386.herokuapp.com${routes.githubCallback}` : `http://localhost:4000${routes.githubCallback}`,
       // github페이지로 갔다가 돌아올 때 callbackURL로 돌아오면서 사용자 정보를 얻게 된다.
       scope: "user:email", //* github email이 private 설정되어있어도 가입되도록
     },
