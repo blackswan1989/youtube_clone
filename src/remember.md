@@ -197,11 +197,13 @@ fetch("URL")
 - 설치 : npm install get-blob-duration
 - videoPlayer.js -> setTotalTime 코드 추가
 
-## 11.4 MongoLab
+## 11.4 MongoLab & MongoDB
+
+https://cloud.mongodb.com/v2/5f8d11ce813279179e468b43#clusters
 
 > Connect to Cluster0 User Name : yourtubeadmin
 > Connect to Cluster0 User PW : yourtube2020
-> 기존 MONGO_URL="mongodb://localhost:27017/yourtube"에서 아래 코드로 수정
+> db.js와 .env수정
 > mongodb+srv://yourtubeadmin:<password>@cluster0.bdhuo.mongodb.net/<dbname>?retryWrites=true&w=majority
 
 ## 11.5 Building for Production
