@@ -11,19 +11,16 @@ import routes from "./routes";
 passport.use(User.createStrategy());
 
 passport.use(
-new GithubStrategy({
-    clientID: process.env.GH_ID,
-    clientSecret: process.env.GH_SECRET,
-    callbackURL: process.env.PRODUCTION ?
-      `https://polar-sea-27980.herokuapp.com${routes.githubCallback}` :
-      `http://localhost:4000${routes.githubCallback}`
-  },
-  // github페이지로 갔다가 돌아올 때 callbackURL로 돌아오면서 사용자 정보를 얻게 된다.
-  scope: "user:email", //* github email이 private 설정되어있어도 가입되도록
-},
-githubLoginCallback // globalRouter.js
-// 이후 로그인 과정이 성공적이었고 이 함수가 문제없이 결과를 return하면 globalRouter.js의 postGithubLogIn을 실행시켜 준다. 그리고 postGithubLogIn은 user를 home화면으로 보내주게 된다.
-)
+  new GithubStrategy({
+      clientID: process.env.GH_ID,
+      clientSecret: process.env.GH_SECRET,
+      callbackURL: process.env.PRODUCTION ? `https://polar-sea-27980.herokuapp.com${routes.githubCallback}` : `http://localhost:4000${routes.githubCallback}`,
+      // github페이지로 갔다가 돌아올 때 callbackURL로 돌아오면서 사용자 정보를 얻게 된다.
+      scope: "user:email", //* github email이 private 설정되어있어도 가입되도록
+    },
+    githubLoginCallback // globalRouter.js
+    // 이후 로그인 과정이 성공적이었고 이 함수가 문제없이 결과를 return하면 globalRouter.js의 postGithubLogIn을 실행시켜 준다. 그리고 postGithubLogIn은 user를 home화면으로 보내주게 된다.
+  )
 );
 
 passport.serializeUser(User.serializeUser());
