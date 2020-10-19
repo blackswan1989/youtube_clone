@@ -1,6 +1,6 @@
 const path = require("path");
 //path는 NodeJS와 함께 기본적으로 설치되는 유틸리티이다.
-const autoprefixer = require("Autoprefixer");
+const autoprefixer = require("autoprefixer");
 const ExtractCSS = require("extract-text-webpack-plugin");
 
 const MODE = process.env.WEBPACK_ENV;
