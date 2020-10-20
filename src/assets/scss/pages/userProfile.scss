@@ -1,32 +1,38 @@
 .user-profile {
-  margin-top: 40px;
+  margin-top: 60px;
   margin-bottom: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
+
   .user-profile__header {
     display: flex;
     flex-direction: column;
     width: 100%;
+
     img {
       max-width: 405px;
       max-height: 50%;
       border-radius: 4px;
     }
+
     .header__column {
       display: flex;
       justify-content: space-between;
       width: 100%;
       margin-top: 20px;
+
       .profile__column {
         .profile__column--box {
           display: flex;
+
           h2,
           i {
             font-size: 1.7rem;
             margin-right: 7px;
             margin-left: 2px;
           }
+
           &:nth-child(2) h2,
           &:nth-child(2) i {
             font-size: 1rem;
@@ -43,6 +49,7 @@
     flex-direction: column;
     align-items: center;
     margin-right: 2px;
+
     a {
       button {
         background-color: $youtube-red;
@@ -54,10 +61,12 @@
         margin-left: 50px;
         font-size: 0.8rem;
         outline: none;
+
         &:active {
           transform: scale(0.9);
         }
       }
+
       a:not(:last-child) {
         margin-bottom: 20px;
       }
@@ -72,12 +81,15 @@
   align-items: flex-start;
   justify-content: center;
   margin-bottom: 40px;
+
   .videoBlock {
     margin: 20px 20px;
     width: 40%;
+
     .videoBlock__thumbnail {
       width: 100%;
     }
+
     .videoBlock__title {
       margin-top: 7px;
       font-size: 1.1rem;
@@ -85,11 +97,13 @@
       text-decoration: none;
       margin-bottom: 5px;
     }
+
     span {
       opacity: 0.5;
       font-size: 0.8rem;
       margin-top: 10px;
       color: $font;
+
       i {
         margin-right: 5px;
       }
