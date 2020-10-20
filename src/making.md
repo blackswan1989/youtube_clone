@@ -51,7 +51,19 @@ Cloning Youtube with VanillaJS and NodeJS
 - brew services run mongodb-community // mongoDB실행
 - mongo & mongod 실행시켜 mongoDB 정상작동 확인해주기.
 - npm start | heroku
-- npm run build && npm run start | #11.5 이후
+- npm run build && npm run start | #11.5 이후 (css변동시 재시작 필요)
+
+## Heroku
+
+- code 변동시 순서대로 진행
+
+  > git add .
+  > git commit -m "변동내용"
+  > git push heroku master
+
+- env, db등 변동시
+  > heroku config:push
+  > heroku config 으로 변동 내용 확인후 진행
 
 ## Data Base
 

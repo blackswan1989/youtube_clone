@@ -224,7 +224,7 @@ https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
   > git remote -v 로 변경주소 확인.
 - git push heroku master 입력하여 heruku git에 push 해준다.
   > 푸쉬하기전에 커밋을 필수로 해주어야 한다. (git add . -> git commit -m "내용" -> git push heroku master 순으로 진행)
-- 위 진행하면 나오는 ex)https://powerful-waters-23262.herokuapp.com/ 주소접속
+- 위 진행하면 나오는 https://quiet-waters-83386.herokuapp.com/ 주소접속
 - heroku logs --tail 에러확인 -> Build Error -> Define a Procfile 참조
 - 수정시 git commit이후 -> vscode 터미널에 git push heroku master 입력해주기
 

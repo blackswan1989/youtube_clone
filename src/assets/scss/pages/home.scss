@@ -12,12 +12,16 @@
   align-items: flex-start;
   justify-content: center;
   margin-bottom: 40px;
+  margin-top: 50px;
+
   .videoBlock {
     margin: 20px 20px;
     width: 30%;
+
     .videoBlock__thumbnail {
       width: 100%;
     }
+
     .videoBlock__title {
       margin-top: 7px;
       font-size: 1.1rem;
@@ -25,28 +29,35 @@
       text-decoration: none;
       margin-bottom: 5px;
     }
+
     &:first-child {
       width: 67%;
+
       .videoBlock__title {
         font-size: 1.5rem;
       }
+
       .like__column {
         display: flex;
+
         span {
           margin-top: 10px;
           font-size: 0.9rem;
           color: $font;
+
           i {
             margin-right: 5px;
           }
         }
       }
     }
+
     span {
       opacity: 0.5;
       font-size: 0.8rem;
       margin-top: 10px;
       color: $font;
+
       i {
         margin-right: 5px;
       }
