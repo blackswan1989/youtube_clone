@@ -17,6 +17,7 @@
   .videoBlock {
     margin: 20px 20px;
     width: 30%;
+    height: 20%;
 
     .videoBlock__thumbnail {
       width: 100%;
@@ -31,7 +32,6 @@
     }
 
     &:first-child {
-      width: 67%;
 
       .videoBlock__title {
         font-size: 1.5rem;
