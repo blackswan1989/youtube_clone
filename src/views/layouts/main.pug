@@ -2,6 +2,7 @@
 //- main안에 모든 화면의 내용들을 채워넣기 위해 block설정 block이름을 content로 설정
 //- 기존 html방식은 모두 복붙해서 사용하고 하나가 바뀌면 모두 다시 복붙해야했지만 레이아웃을 사용하면 컨트롤이 간편해진다.
 //- pug안에 자바스크립트를 사용하고싶으면 #{}안에 작성하면 된다.
+include ../mixins/message
 
 doctype html
 html
@@ -10,6 +11,21 @@ html
       title #{pageTitle} | #{siteName}
       link(rel="stylesheet", href="/static/styles.css")
     body
+      if messages.error
+        +message({
+          type:"error",
+          text:messages.error
+        })
+      else if messages.info
+        +message({
+          type:"info",
+          text:messages.info
+        })
+      else if messages.success
+        +message({
+          type:"success",
+          text:messages.success
+        })
       include ../partials/header
       main
         block content

@@ -9,6 +9,7 @@ import passport from "passport"; // passport middleware
 import mongoose from "mongoose";
 import session from "express-session";
 import path from "path";
+import flash from "express-flash"
 import MongoStore from "connect-mongo";
 import {
   localsMiddleware
@@ -56,6 +57,8 @@ app.use(
     //CookieStore와 mongo를 연결시켜주어야한다.
   })
 );
+app.use(flash());
+
 app.use(passport.initialize());
 app.use(passport.session());
 //passport를 통해 session이 가진 쿠키를 이용한다.

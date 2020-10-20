@@ -239,3 +239,9 @@ http://github.com/xavdid/heroku-config
 - heroku config:push 하면 local 파일을 heroku config로 push해주는 기능이다.
 - heroku config를 입력하면 .env 변수들을 확인 할 수 있다.
   > heroku config:push 입력 -> heroku config 입력
+
+# 11.8 Flash Messages
+
+https://www.npmjs.com/package/express-flash
+
+> 설치 : npm i express-flash

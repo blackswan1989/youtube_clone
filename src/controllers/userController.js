@@ -20,6 +20,7 @@ export const postJoin = async (req, res, next) => {
     },
   } = req;
   if (password !== password2) {
+    req.flash("error", "Password don't match")
     res.status(400); //- password가 일치하지 않으면 코드400(Bad Request) 발동.
     console.log(req.body); //- 콘솔에 Join now 정보 출력시켜준다. 추가로 (pssword가 일치하지 않으면 콘솔에 400(Bad Request)띄워준다. )
     res.render("join", {
@@ -52,10 +53,15 @@ export const postLogin = passport.authenticate("local", {
   failureRedirect: routes.login,
   //successRedirect는 로그인 성공시 home 화면을 바로 띄워준다.
   successRedirect: routes.home,
+  successFlash: "Welcome",
+  failureFlash: "Can't log in. Check email or password"
 });
 
 // Github Login
-export const githubLogin = passport.authenticate("github");
+export const githubLogin = passport.authenticate("github", {
+  successFlash: "Welcome",
+  failureFlash: "Can't log in at this time"
+});
 
 export const githubLoginCallback = async (_, __, profile, cb) => {
   //console.log(accessToken, refreshToken, profile, cb);
@@ -99,6 +105,7 @@ export const postGithubLogin = (req, res) => {
 
 // Log out Part
 export const logout = (req, res) => {
+  req.flash("info", "Logged out, see you later")
   req.logout(); //Process Log Out
   res.redirect(routes.home);
 };
@@ -118,13 +125,14 @@ export const userDetail = async (req, res) => {
     },
   } = req;
   try {
-    const user = await User.findById(id); //.populate("videos");
-    //console.log(user);
+    const user = await User.findById(id).populate("videos");
+    console.log(user);
     res.render("userDetail", {
       pageTitle: "User Detail",
       user
     });
   } catch (error) {
+    req.flash("error", "User not found")
     res.redirect(routes.home);
   }
 };
@@ -149,8 +157,10 @@ export const postEditProfile = async (req, res) => {
       avatarUrl: file ? file.location : req.user.avatarUrl,
       //두번째 file.path -> AWS S3 설치 후 file.location 으로 변경
     });
+    req.flash("success", "Profile updated")
     res.redirect(routes.me);
   } catch (error) {
+    req.flash("error", "Can't update profile")
     res.redirect(routes.editProfile);
   }
 };
@@ -170,6 +180,7 @@ export const postChangePassword = async (req, res) => {
   } = req;
   try {
     if (newPassword !== newPassword1) {
+      req.flash("error", "Password don't match")
       res.status(400);
       res.redirect(`/users${routes.changePassword}`);
       return;
@@ -177,6 +188,7 @@ export const postChangePassword = async (req, res) => {
     await req.user.changePassword(oldPassword, newPassword);
     res.redirect(routes.me);
   } catch (error) {
+    req.flash("error", "Can't change password")
     res.status(400);
     res.redirect(`/users${routes.changePassword}`);
   }

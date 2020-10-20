@@ -27,8 +27,11 @@ Cloning Youtube with VanillaJS and NodeJS
 10/8 : #10.0 ~ #10.2 & JSchallege
 10/9 : JSchallenge
 10/10 : #10.3 ~ #10.5 finish
-10/12 : #11.8 ~ #11.9 BONUS
-10/13 : #11.4 ~ #11.5 Heroku
+10/12 : #11.0 ~ #11.1 AWS S3
+10/13 : #11.4 MongoDB Cloud
+10/14 ~ 10/15 : # 11.5 Building for Production
+10/16 ~ 10/19 : #11.6 ~ #11.7 Heroku
+10/20 : #11.8 ~ #11.9 Flash Message
 
 ## Pages:
 
