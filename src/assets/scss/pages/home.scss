@@ -21,6 +21,11 @@
 
     .videoBlock__thumbnail {
       width: 100%;
+      transition-duration: 0.5s;
+
+      &:hover {
+        opacity: 0.5;
+      }
     }
 
     .videoBlock__title {
