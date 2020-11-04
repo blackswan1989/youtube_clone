@@ -17,7 +17,7 @@ Cloning Youtube in Full-Stack
 ---
 
 ## Features:
-![yourtube]([https://blackswan1989.github.io/portfolio/portfolio_v1/css/images/projects/mac_yourTube.png])
+![yourtube]([/../mac_yourTube.png])
 
 ## Url : https://quiet-waters-83386.herokuapp.com/
 
