@@ -17,10 +17,11 @@
   .videoBlock {
     margin: 20px 20px;
     width: 30%;
-    height: 20%;
+    height: 250px;
 
     .videoBlock__thumbnail {
       width: 100%;
+      height: 250px;
       transition-duration: 0.5s;
 
       &:hover {
