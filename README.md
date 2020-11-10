@@ -1,6 +1,6 @@
 # YOUTUBE CLONE
 
-Cloning Youtube in Full-Stack
+Cloning Youtube
 
 #### 🌇 Front-end : Pug + SCSS + Vanilla JS(ES6) + WebPack
 
