@@ -16,7 +16,11 @@ Cloning Youtube
 
 ---
 
-![mac_yourTube](https://user-images.githubusercontent.com/67410919/98087993-42519c00-1ec4-11eb-9f25-34649591568f.png)
+## Photo
+
+![mac-yourtube1](https://user-images.githubusercontent.com/67410919/99020603-4f484c80-25a2-11eb-822e-e3bc9fee4374.png)
+
+![mac-yourtube2](https://user-images.githubusercontent.com/67410919/99020616-54a59700-25a2-11eb-9e1a-2255f06021f2.png)
 
 ### Url : https://quiet-waters-83386.herokuapp.com/
 

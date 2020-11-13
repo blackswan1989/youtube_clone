@@ -1,4 +1,4 @@
-# YOUTUBE CLONE 2020.09.03 ~
+# YOUTUBE CLONE 2020.09.03 ~ 2020.10.20
 
 Cloning Youtube with VanillaJS and NodeJS
 
